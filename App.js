@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow
+ * @flow strict-local
  */
 
 import React from 'react';
@@ -24,13 +24,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {MyStack} from './src/routes/StackNavigator';
+import {NavigationContainer} from '@react-navigation/native';
+
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <Text style={{fontFamily: 'OpenSans-ExtraBoldItalic', fontSize: 30}}>
-        asdgbfhjasd
-      </Text>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
     </>
   );
 };
