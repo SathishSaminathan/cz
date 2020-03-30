@@ -26,7 +26,7 @@ function MyStack() {
     },
   };
   return (
-    <Stack.Navigator initialRouteName="GetStarted" headerMode="none">
+    <Stack.Navigator initialRouteName="Signup" headerMode="none">
       <Stack.Screen
         name="GetStarted"
         component={GetStarted}

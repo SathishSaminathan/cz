@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StatusBar} from 'react-native';
+
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
 import {Colors} from '../../constants/ThemeConstants';
 import {Images} from '../../assets/images';
 import LoginTextInput from '../../components/Shared/LoginTextInput';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
 import TextComponent from '../../components/Shared/TextComponent';
+import PoweredBY from '../../components/Shared/PoweredBy';
+import IconComponent from '../../components/Shared/IconComponent';
+import {IconType} from '../../constants/AppConstants';
 
 export default class Signup extends Component {
   render() {
@@ -74,6 +78,34 @@ export default class Signup extends Component {
               style={{color: Colors.textDark, textAlign: 'center'}}>
               Sign in with
             </TextComponent>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: widthPerc(30),
+                alignSelf: 'center',
+                // backgroundColor: 'red',
+                paddingVertical: 10,
+                paddingBottom: 20,
+              }}>
+              <IconComponent
+                type={IconType.FontAwesome}
+                name="facebook"
+                style={{color: Colors.textBlack, fontSize: 25}}
+              />
+              <IconComponent
+                type={IconType.FontAwesome}
+                name="amazon"
+                style={{color: Colors.textBlack, fontSize: 25}}
+              />
+              <IconComponent
+                type={IconType.FontAwesome}
+                name="twitter"
+                style={{color: Colors.textBlack, fontSize: 25}}
+              />
+            </View>
+            <PoweredBY />
           </View>
         </View>
       </View>

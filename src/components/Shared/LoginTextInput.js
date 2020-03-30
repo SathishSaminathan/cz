@@ -29,7 +29,7 @@ const LoginTextInput = ({password, placeholder, icon}) => {
     return (
       <Icon
         name={temp}
-        style={{color: Colors.textWhite, fontSize: 35}}
+        style={{color: Colors.textWhite, fontSize: 30}}
         onPress={() => password && setShowPassword(!ShowPassword)}
       />
     );
@@ -41,12 +41,12 @@ const LoginTextInput = ({password, placeholder, icon}) => {
         borderWidth: 1,
         borderColor: Colors.textWhite,
         borderRadius: 50,
-        paddingHorizontal: 5,
+        paddingHorizontal: 10,
       }}>
       <View style={{flex: 8}}>
         <TextInput
           secureTextEntry={password && !ShowPassword}
-          style={{color: Colors.textWhite}}
+          style={{color: Colors.textWhite, fontSize: 12}}
           // defaultValue="sample"
           placeholder={placeholder}
           placeholderTextColor={Colors.textWhite}

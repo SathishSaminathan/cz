@@ -14,6 +14,7 @@ import {widthPerc, heightPerc} from '../helpers/styleHelper';
 import {Images} from '../assets/images';
 import ButtonComponent from '../components/Shared/ButtonComponent';
 import TextComponent from '../components/Shared/TextComponent';
+import PoweredBY from '../components/Shared/PoweredBy';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 
@@ -54,10 +55,7 @@ export default class GetStarted extends Component {
             </View>
           </View>
           <View style={{flex: 3}}>
-            <TextComponent
-              style={{color: Colors.textBlack, textAlign: 'center'}}>
-              Powered By Alfred
-            </TextComponent>
+            <PoweredBY />
           </View>
         </View>
       </View>
