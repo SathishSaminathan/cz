@@ -1,12 +1,11 @@
 import React from 'react';
 import {IconType, FontType} from '../../constants/AppConstants';
 
-const IconComponent = ({style, type, name}) => {
+const IconComponent = ({style, type, name, size, color}) => {
   const renderIcons = () => {
     let Icon = null;
     Icon = type;
-    console.log('FontType', Icon, type, name);
-    return <Icon style={style} name={name} />;
+    return <Icon style={style} name={name} size={size} color={color} />;
   };
 
   return <>{renderIcons()}</>;

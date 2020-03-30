@@ -31,7 +31,6 @@ export default class GetStarted extends Component {
           onBuffer={this.onBuffer} // Callback when remote video is buffering
           onError={this.videoError} // Callback when video cannot be loaded
           style={styles.backgroundVideo}
-          muted
           //   overley
         />
         <View style={styles.container}>

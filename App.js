@@ -26,12 +26,13 @@ import {
 
 import {MyStack} from './src/routes/StackNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import { TabNavigator } from './src/routes/TabNavigator';
 
 const App = () => {
   return (
     <>
       <NavigationContainer>
-        <MyStack />
+        <TabNavigator />
       </NavigationContainer>
     </>
   );

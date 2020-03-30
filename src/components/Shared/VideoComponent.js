@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Video from 'react-native-video';
-import {BlurView} from '@react-native-community/blur';
 
 const VideoComponent = props => {
   return (
@@ -15,8 +14,6 @@ const VideoComponent = props => {
         // ref={ref => {
         //   this.player = ref;
         // }}
-        // muted
-        muted
         repeat={true}
         resizeMode={'cover'}
         rate={1.0}
