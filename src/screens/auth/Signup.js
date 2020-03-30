@@ -67,7 +67,7 @@ export default class Signup extends Component {
             <View
               style={{paddingVertical: 10, width: '50%', alignSelf: 'center'}}>
               <ButtonComponent
-                style={{backgroundColor: Colors.black, fontSize: 12}}
+                style={{backgroundColor: Colors.darkGrey, fontSize: 12}}
                 borderRadius={50}>
                 Sign Up
               </ButtonComponent>

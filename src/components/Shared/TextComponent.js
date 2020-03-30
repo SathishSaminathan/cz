@@ -20,12 +20,13 @@ const TextComponent = props => {
     <Text
       {...props}
       style={[
-        style,
         {
           fontFamily: getFontFamily(type),
+          fontSize: 12,
           // fontWeight: '100',
           // color: colors.primaryColor,
         },
+        style,
       ]}>
       {children}
     </Text>
