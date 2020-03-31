@@ -8,6 +8,7 @@ import {IconType} from '../constants/AppConstants';
 import {Button} from 'react-native';
 import TabBarButton from './TabBarButton';
 import Stays from '../screens/Stays';
+import { HomeStack } from './StackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ function TabNavigator() {
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
       }}>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Stays" component={Stays} />
       <Tab.Screen name="Offers" component={Notifications} />
       <Tab.Screen name="Profile" component={Profile} />

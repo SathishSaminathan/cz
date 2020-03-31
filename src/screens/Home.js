@@ -44,7 +44,9 @@ export default class Home extends Component {
             />
           </View>
           <View style={{position: 'absolute', right: '5%'}}>
-            <TouchableNativeFeedback style={{padding: 10}}>
+            <TouchableNativeFeedback
+              onPress={() => this.props.navigation.push('Drawer')}
+              style={{padding: 10}}>
               <IconComponent
                 type={IconType.Ionicons}
                 name="ios-menu"
@@ -131,10 +133,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 30,
     paddingTop: 20,
-  },
-  text: {
-    color: 'grey',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });

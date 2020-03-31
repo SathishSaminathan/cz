@@ -10,21 +10,11 @@ import Profile from '../screens/Profile';
 import GetStarted from '../screens/GetStarted';
 import Signup from '../screens/auth/Signup';
 import Login from '../screens/auth/Login';
+import DrawerComponent from '../screens/Home/DrawerComponent';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
-  const config = {
-    animation: 'spring',
-    config: {
-      stiffness: 1000,
-      damping: 500,
-      mass: 3,
-      overshootClamping: true,
-      restDisplacementThreshold: 0.01,
-      restSpeedThreshold: 0.01,
-    },
-  };
   return (
     <Stack.Navigator initialRouteName="GetStarted" headerMode="none">
       <Stack.Screen
@@ -55,5 +45,36 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
+function HomeStack() {
+  return (
+    <Stack.Navigator initialRouteName="GetStarted" headerMode="none">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        // options={{
+        //   title: 'Profile',
+        //   cardStyleInterpolator:
+        //     CardStyleInterpolators.forRevealFromBottomAndroid,
+        // }}
+      />
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerComponent}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
-export {MyStack};
+export {MyStack, HomeStack};
