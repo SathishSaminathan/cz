@@ -47,7 +47,14 @@ function MyStack() {
 }
 function HomeStack() {
   return (
-    <Stack.Navigator initialRouteName="GetStarted" headerMode="none">
+    <Stack.Navigator
+      initialRouteName="GetStarted"
+      headerMode="none"
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        animationEnabled:true
+      }}>
       <Stack.Screen
         name="Home"
         component={Home}
