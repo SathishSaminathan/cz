@@ -45,7 +45,7 @@ export default class Home extends Component {
           </View>
           <View style={{position: 'absolute', right: '5%'}}>
             <TouchableNativeFeedback
-              onPress={() => this.props.navigation.push('Drawer')}
+              onPress={() => this.props.navigation.navigate('Drawer')}
               style={{padding: 10}}>
               <IconComponent
                 type={IconType.Ionicons}

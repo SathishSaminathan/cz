@@ -169,7 +169,7 @@ export default class Home extends Component {
             <TouchableOpacity
               style={{flex: 1}}
               activeOpacity={1}
-              onPress={() => this.props.navigation.pop()}>
+              onPress={() => this.props.navigation.navigate('Home')}>
               <ImageComponent
                 source={Images.LogoDark}
                 style={{width: undefined, height: undefined, flex: 1}}
@@ -179,7 +179,7 @@ export default class Home extends Component {
           </View>
           <View style={{position: 'absolute', right: '5%'}}>
             <TouchableNativeFeedback
-              onPress={() => this.props.navigation.pop()}
+              onPress={() => this.props.navigation.navigate('Home')}
               style={{padding: 10}}>
               <IconComponent
                 type={IconType.Ionicons}
