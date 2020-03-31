@@ -19,4 +19,5 @@ export const Colors = {
   green: '#13b495',
   orange: '#FC642D',
   blue: '#00A699',
+  searchText: '#A2A0A1',
 };

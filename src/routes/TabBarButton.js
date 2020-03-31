@@ -6,7 +6,6 @@ import IconComponent from '../components/Shared/IconComponent';
 import {IconType} from '../constants/AppConstants';
 
 const TabBarButton = ({state, descriptors, navigation}) => {
-  console.log('state, descriptors, navigation', state, descriptors, navigation);
   //   console.log(props, 'props');
   //   const {routeName, onPress, focused} = props;
   const iconMap = {
@@ -14,15 +13,16 @@ const TabBarButton = ({state, descriptors, navigation}) => {
     Profile: 'user',
     Wishlist: 'heart',
     MapView: 'map',
-    Program: 'credit-card',
+    Stays: 'briefcase',
+    Offers: 'tag',
     Settings: 'settings',
     Fashion: 'layout',
     Beauty: 'instagram',
-    Chat: 'message-square',
-    Notifications: 'notification',
+    Bookings: 'message-square',
+    Notifications: 'bell',
   };
   return (
-    <View style={{flexDirection: 'row', height: 50}}>
+    <View style={{flexDirection: 'row', height: 60}}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -54,55 +54,60 @@ const TabBarButton = ({state, descriptors, navigation}) => {
         };
 
         return (
-          //   <TouchableOpacity
-          //     accessibilityRole="button"
-          //     accessibilityStates={isFocused ? ['selected'] : []}
-          //     accessibilityLabel={options.tabBarAccessibilityLabel}
-          //     testID={options.tabBarTestID}
-          //     onPress={onPress}
-          //     onLongPress={onLongPress}
-          //     style={{flex: 1}}>
-          //     <TextComponent style={{color: isFocused ? '#673ab7' : '#222'}}>{label}</TextComponent>
-          //   </TouchableOpacity>
-          <TouchableNativeFeedback
-            // background={TouchableNativeFeedback.Ripple('red')}
-            // containerStyle={{
-            //   backgroundColor: Colors.red,
-            // }}
-            delayPressIn={0}
-            onPress={onPress}>
-            <View
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <IconComponent
-                type={IconType.AntDesign}
-                name={iconMap[label]}
-                size={isFocused ? 25 : 25}
-                style={[
-                  isFocused && {
-                    // backgroundColor: Colors.primaryThemeColor,
-                    // padding: 8,
-                    borderRadius: 10,
-                    // elevation: 10,
-                  },
-                  {alignSelf: 'center'},
-                ]}
-                color={isFocused ? Colors.darkGrey : Colors.lightGrey}
-              />
-              {/* <TextComponent
+          <View style={{flex: 1}}>
+            {isFocused && (
+              <View
                 style={{
-                  color: isFocused
-                    ? Colors.primaryThemeColor
-                    : Colors.lightGrey,
-                  fontSize: 12,
-                }}>
-                {label}
-              </TextComponent> */}
-            </View>
-          </TouchableNativeFeedback>
+                  height: 2,
+                  backgroundColor: Colors.darkGrey,
+                  position: 'absolute',
+                  top: 0,
+                  left: '20%',
+                  right: '20%',
+                }}
+              />
+            )}
+            <TouchableNativeFeedback
+              // background={TouchableNativeFeedback.Ripple('red')}
+              // containerStyle={{
+              //   backgroundColor: Colors.red,
+              // }}
+              delayPressIn={0}
+              onPress={onPress}>
+              <View
+                style={[
+                  {
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  },
+                ]}>
+                <IconComponent
+                  type={IconType.Feather}
+                  name={iconMap[label]}
+                  size={isFocused ? 20 : 20}
+                  style={[
+                    isFocused && {
+                      // backgroundColor: Colors.primaryThemeColor,
+                      // padding: 8,
+                      borderRadius: 10,
+                      // elevation: 10,
+                    },
+                    {alignSelf: 'center'},
+                  ]}
+                  color={isFocused ? Colors.darkGrey : Colors.lightGrey}
+                />
+                <TextComponent
+                  style={{
+                    color: isFocused ? Colors.darkGrey : Colors.lightGrey,
+                    fontSize: 12,
+                    // fontWeight: isFocused ? 'bold' : 'normal',
+                  }}>
+                  {label}
+                </TextComponent>
+              </View>
+            </TouchableNativeFeedback>
+          </View>
         );
       })}
     </View>

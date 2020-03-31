@@ -7,6 +7,7 @@ import IconComponent from '../components/Shared/IconComponent';
 import {IconType} from '../constants/AppConstants';
 import {Button} from 'react-native';
 import TabBarButton from './TabBarButton';
+import Stays from '../screens/Stays';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,8 @@ function TabNavigator() {
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Notifications" component={Notifications} />
+      <Tab.Screen name="Stays" component={Stays} />
+      <Tab.Screen name="Offers" component={Notifications} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
