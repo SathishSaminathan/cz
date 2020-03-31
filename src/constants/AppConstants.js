@@ -1,7 +1,8 @@
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign'; 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; 
+import Feather from 'react-native-vector-icons/Feather'; 
 export const FontType = {
   REGULAR: 'REGULAR',
   LIGHT: 'LIGHT',
@@ -13,4 +14,5 @@ export const IconType = {
   Ionicons: Ionicons,
   AntDesign: AntDesign,
   Feather: Feather,
+  MaterialCommunityIcons:MaterialCommunityIcons
 };

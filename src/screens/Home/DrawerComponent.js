@@ -5,6 +5,7 @@ import {
   StyleSheet,
   StatusBar,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
 import TextComponent from '../../components/Shared/TextComponent';
@@ -16,7 +17,137 @@ import IconComponent from '../../components/Shared/IconComponent';
 import {IconType} from '../../constants/AppConstants';
 import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 import PoweredBY from '../../components/Shared/PoweredBy';
+import Divider from '../../components/Shared/Divider';
 
+const accountList = [
+  {
+    name: 'Account',
+    path: 'Account',
+    icon: 'star-circle-outline',
+  },
+  {
+    name: 'Refer & Earn',
+    path: 'Account',
+    icon: 'account-circle-outline',
+  },
+  {
+    name: 'Play & Win',
+    path: 'Account',
+    icon: 'gamepad-variant',
+  },
+  {
+    name: 'Book a Cab',
+    path: 'Account',
+    icon: 'car',
+  },
+  {
+    name: 'Events',
+    path: 'Account',
+    icon: 'calendar',
+  },
+  {
+    name: 'Notification',
+    path: 'Account',
+    icon: 'bell-outline',
+  },
+];
+const general = [
+  {
+    name: 'About Us',
+    path: 'Account',
+    icon: 'information-outline',
+  },
+  {
+    name: 'Feedback',
+    path: 'Account',
+    icon: 'message-alert-outline',
+  },
+  {
+    name: 'Alfred loyalty information',
+    path: 'Account',
+    icon: 'file-document-outline',
+  },
+  {
+    name: 'Dream Hotel Benefits',
+    path: 'Account',
+    icon: 'brightness-percent',
+  },
+  {
+    name: 'Room Preferences',
+    path: 'Account',
+    icon: 'home-outline',
+  },
+  {
+    name: 'Customer Service',
+    path: 'Account',
+    icon: 'headset',
+  },
+  {
+    name: 'Your Privacy',
+    path: 'Account',
+    icon: 'lock-outline',
+  },
+];
+
+class ListItem extends Component {
+  renderAccountList = (isAccount = false) => {
+    let list = isAccount ? accountList : general;
+    return list.map(list => (
+      <TouchableNativeFeedback>
+        <View
+          style={{
+            paddingVertical: 18,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            flex: 1,
+            width: widthPerc(73),
+            alignSelf: 'center',
+            backgroundColor: Colors.white,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              flex: 1,
+            }}>
+            <IconComponent
+              type={IconType.MaterialCommunityIcons}
+              name={list.icon}
+              style={{
+                paddingRight: 15,
+                fontSize: 20,
+                flex: 1,
+                textAlign: 'center',
+              }}
+            />
+            <TextComponent style={{fontSize: 18, flex: 8}}>
+              {list.name}
+            </TextComponent>
+          </View>
+          {isAccount && (
+            <View>
+              <IconComponent
+                type={IconType.AntDesign}
+                name="right"
+                style={{fontSize: 18}}
+              />
+            </View>
+          )}
+        </View>
+      </TouchableNativeFeedback>
+    ));
+  };
+  render() {
+    return (
+      <View>
+        {this.renderAccountList(true)}
+        <Divider />
+        {this.renderAccountList()}
+      </View>
+    );
+  }
+}
 export default class Home extends Component {
   render() {
     return (
@@ -58,16 +189,29 @@ export default class Home extends Component {
             </TouchableNativeFeedback>
           </View>
         </View>
-        <View style={{backgroundColor: 'red', paddingVertical: 30, justifyContent:'center', alignItems:'center'}}>
+        <View
+          style={{
+            backgroundColor: Colors.textBlack,
+            paddingVertical: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <View>
-            <TextComponent style={{fontSize: 24}}>
+            <TextComponent style={{fontSize: 24, color: Colors.white}}>
               Hey, John Thompson
             </TextComponent>
-            <TextComponent style={{fontSize: 14}}>
+            <TextComponent style={{fontSize: 14, color: Colors.white}}>
               You have 1500 points
             </TextComponent>
           </View>
         </View>
+        <ScrollView
+          contentContainerStyle={{
+            backgroundColor: Colors.white,
+          }}>
+          <ListItem {...this.props} />
+          <PoweredBY />
+        </ScrollView>
       </View>
     );
   }
@@ -77,6 +221,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: Colors.white,
   },
   image: {
     flex: 1,

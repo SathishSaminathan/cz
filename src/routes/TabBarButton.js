@@ -10,11 +10,11 @@ const TabBarButton = ({state, descriptors, navigation}) => {
   //   const {routeName, onPress, focused} = props;
   const iconMap = {
     Home: 'home',
-    Profile: 'user',
+    Profile: 'account-circle-outline',
     Wishlist: 'heart',
     MapView: 'map',
-    Stays: 'briefcase',
-    Offers: 'tag',
+    Stays: 'briefcase-outline',
+    Offers: 'tag-outline',
     Settings: 'settings',
     Fashion: 'layout',
     Beauty: 'instagram',
@@ -83,7 +83,7 @@ const TabBarButton = ({state, descriptors, navigation}) => {
                   },
                 ]}>
                 <IconComponent
-                  type={IconType.Feather}
+                  type={IconType.MaterialCommunityIcons}
                   name={iconMap[label]}
                   size={isFocused ? 20 : 20}
                   style={[

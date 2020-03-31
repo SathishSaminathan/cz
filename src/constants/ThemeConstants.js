@@ -20,4 +20,5 @@ export const Colors = {
   orange: '#FC642D',
   blue: '#00A699',
   searchText: '#A2A0A1',
+  dividerColor:"#e9e8e8"
 };
