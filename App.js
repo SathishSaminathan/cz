@@ -7,26 +7,13 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {MyStack} from './src/routes/StackNavigator';
 import {NavigationContainer} from '@react-navigation/native';
-import { TabNavigator } from './src/routes/TabNavigator';
+import {TabNavigator} from './src/routes/TabNavigator';
 
 const App = () => {
   return (
