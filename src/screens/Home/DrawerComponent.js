@@ -116,7 +116,7 @@ class ListItem extends Component {
               name={list.icon}
               style={{
                 paddingRight: 15,
-                fontSize: 20,
+                fontSize: 25,
                 flex: 1,
                 textAlign: 'center',
               }}
