@@ -14,15 +14,26 @@ import ImageComponent from '../components/Shared/ImageComponent';
 import {Images} from '../assets/images';
 import {widthPerc, heightPerc} from '../helpers/styleHelper';
 import IconComponent from '../components/Shared/IconComponent';
-import {IconType} from '../constants/AppConstants';
+import {IconType, FontType} from '../constants/AppConstants';
 import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 import PoweredBY from '../components/Shared/PoweredBy';
 
 export default class Home extends Component {
+  componentDidMount() {
+    this.navListener = this.props.navigation.addListener('didFocus', () => {
+      StatusBar.setBarStyle('light-content');
+      StatusBar.setBackgroundColor(Colors.primaryThemeColor);
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
+        <StatusBar
+          backgroundColor={Colors.white}
+          barStyle={'dark-content'}
+          hidden={false}
+          translucent={false}
+        />
         <View
           style={{
             height: 80,
@@ -55,7 +66,7 @@ export default class Home extends Component {
             </TouchableNativeFeedback>
           </View>
         </View>
-        <ImageBackground source={Images.Home} style={styles.image}>
+        <ImageBackground source={Images.group15} style={styles.image}>
           <View style={{flex: 1}}>
             <View
               style={{
@@ -64,11 +75,13 @@ export default class Home extends Component {
                 justifyContent: 'space-between',
               }}>
               <View>
-                <TextComponent style={{fontSize: 16, color: Colors.white}}>
+                <TextComponent
+                  style={{fontSize: 16, color: Colors.white}}
+                  type={FontType.BOLD}>
                   Hi, John
                 </TextComponent>
                 <TextComponent style={{fontSize: 10, color: Colors.white}}>
-                  Alfred Loyality Points 1500
+                  Alfred Loyalty Points 1500
                 </TextComponent>
               </View>
               <View style={{flexDirection: 'row'}}>
@@ -89,7 +102,9 @@ export default class Home extends Component {
                 </View>
               </View>
             </View>
-            <TouchableOpacity activeOpacity={1}>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() => this.props.navigation.navigate('Location')}>
               <View
                 style={{
                   backgroundColor: Colors.white,
@@ -129,7 +144,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
     paddingTop: 20,

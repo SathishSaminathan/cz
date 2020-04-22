@@ -35,8 +35,8 @@ const ButtonComponent = props => {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: borderRadius,
-          elevation: 10,
-          height: 46,
+          elevation: style.elevation || 10,
+          height: style.height || 46,
         },
         {...style},
       ]}>
@@ -66,6 +66,7 @@ const ButtonComponent = props => {
             style={{
               fontSize: style.fontSize || 20,
               color: style.color || Colors.textWhite,
+              fontFamily: style.fontFamily,
             }}>
             {children}
           </TextComponent>

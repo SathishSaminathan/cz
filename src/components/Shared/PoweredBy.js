@@ -4,7 +4,7 @@ import TextComponent from './TextComponent';
 import {Colors} from '../../constants/ThemeConstants';
 
 const PoweredBY = ({params}) => (
-  <TextComponent style={{color: Colors.textBlack, textAlign: 'center'}}>
+  <TextComponent style={{color: Colors.textBlack, textAlign: 'center', paddingVertical: 8}}>
     Powered By Alfred
   </TextComponent>
 );

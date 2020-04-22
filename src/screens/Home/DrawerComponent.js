@@ -6,6 +6,7 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 
 import TextComponent from '../../components/Shared/TextComponent';
@@ -24,11 +25,13 @@ const accountList = [
     name: 'Account',
     path: 'Account',
     icon: 'star-circle-outline',
+    route: 'Profile',
   },
   {
     name: 'Refer & Earn',
     path: 'Account',
     icon: 'account-circle-outline',
+    route: 'ReferEarn',
   },
   {
     name: 'Play & Win',
@@ -39,16 +42,25 @@ const accountList = [
     name: 'Book a Cab',
     path: 'Account',
     icon: 'car',
+    route: 'ChooseRide',
   },
   {
     name: 'Events',
     path: 'Account',
     icon: 'calendar',
+    route: 'Events',
   },
   {
     name: 'Notification',
     path: 'Account',
     icon: 'bell-outline',
+    route: 'Notification',
+  },
+  {
+    name: 'Order Your Food',
+    path: 'Account',
+    icon: 'food',
+    route: 'OrderYourFood',
   },
 ];
 const general = [
@@ -61,47 +73,105 @@ const general = [
     name: 'Feedback',
     path: 'Account',
     icon: 'message-alert-outline',
+    route: 'Feedback',
   },
   {
-    name: 'Alfred loyalty information',
+    name: 'Alfred Loyalty Information',
     path: 'Account',
     icon: 'file-document-outline',
+    route: 'AlfredLoyaltyInformation',
   },
   {
     name: 'Dream Hotel Benefits',
     path: 'Account',
     icon: 'brightness-percent',
+    // route: 'MemberBenefits',
+  },
+  {
+    name: 'Make Reservation',
+    path: 'Account',
+    icon: 'calendar-check-outline',
+    route: 'MakeReservation',
   },
   {
     name: 'Room Preferences',
     path: 'Account',
     icon: 'home-outline',
+    route: 'Preferences',
+  },
+  {
+    name: 'Restaurant Recommendation',
+    path: 'Account',
+    icon: 'food-fork-drink',
+    route: 'RestaurantRecommendation',
+  },
+  {
+    name: 'Toiletries Request',
+    path: 'Account',
+    icon: 'spray-bottle',
+    route: 'ToiletriesRequest',
+  },
+  {
+    name: 'Favorites',
+    path: 'Account',
+    icon: 'heart-outline',
+    route: 'Favorites',
+  },
+  {
+    name: 'Preferred Travel Partners',
+    path: 'Account',
+    icon: 'airplane',
+    route: 'PreferredTravelPartners',
+  },
+  {
+    name: 'Email Subscriptions',
+    path: 'Account',
+    icon: 'email-outline',
+    route: 'EmailSubscriptions',
+  },
+  {
+    name: 'Security',
+    path: 'Account',
+    icon: 'shield-check-outline',
+    route: 'Security',
+  },
+  {
+    name: 'Do Not Sell My Info',
+    path: 'Account',
+    icon: 'lock-alert',
+    // route: 'RoomPreferences',
   },
   {
     name: 'Customer Service',
     path: 'Account',
     icon: 'headset',
+    route: 'CustomerService',
   },
   {
     name: 'Your Privacy',
     path: 'Account',
     icon: 'lock-outline',
+    route: 'PrivacyPolicy',
   },
 ];
 
 class ListItem extends Component {
   renderAccountList = (isAccount = false) => {
     let list = isAccount ? accountList : general;
-    return list.map(list => (
-      <TouchableNativeFeedback>
+    return list.map((list, i) => (
+      <TouchableNativeFeedback
+        key={i}
+        onPress={() =>
+          list.route && this.props.navigation.navigate(list.route)
+        }>
         <View
           style={{
-            paddingVertical: 18,
+            paddingVertical: 16,
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center',
             flex: 1,
-            width: widthPerc(73),
+            width: widthPerc(80),
             alignSelf: 'center',
             backgroundColor: Colors.white,
           }}>
@@ -116,7 +186,7 @@ class ListItem extends Component {
               name={list.icon}
               style={{
                 paddingRight: 15,
-                fontSize: 25,
+                fontSize: 23,
                 flex: 1,
                 textAlign: 'center',
               }}
@@ -149,9 +219,20 @@ class ListItem extends Component {
   }
 }
 export default class Home extends Component {
+  componentDidMount() {
+    this.navListener = this.props.navigation.addListener('didFocus', () => {
+      StatusBar.setBarStyle('light-content');
+      StatusBar.setBackgroundColor(Colors.primaryThemeColor);
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor={Colors.white}
+          barStyle="dark-content"
+          animated
+        />
         <View
           style={{
             height: 80,
@@ -189,9 +270,11 @@ export default class Home extends Component {
             </TouchableNativeFeedback>
           </View>
         </View>
-        <View
+        <ImageBackground
+          source={Images.memberBg}
+          resizeMode="contain"
           style={{
-            backgroundColor: Colors.textBlack,
+            backgroundColor: Colors.themeBlack,
             paddingVertical: 30,
             justifyContent: 'center',
             alignItems: 'center',
@@ -204,7 +287,7 @@ export default class Home extends Component {
               You have 1500 points
             </TextComponent>
           </View>
-        </View>
+        </ImageBackground>
         <ScrollView
           contentContainerStyle={{
             backgroundColor: Colors.white,

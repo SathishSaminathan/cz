@@ -7,7 +7,6 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-import Video from 'react-native-video';
 import VideoComponent from '../components/Shared/VideoComponent';
 import {Colors} from '../constants/ThemeConstants';
 import {widthPerc, heightPerc} from '../helpers/styleHelper';
@@ -24,10 +23,10 @@ export default class GetStarted extends Component {
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
         <StatusBar backgroundColor={Colors.transparent} translucent />
         <VideoComponent
-          source={require('../assets/videos/GetStarted.mp4')} // Can be a URL or a local file.
-          ref={ref => {
-            this.player = ref;
-          }} // Store reference
+          source={require('../assets/videos/GetStartedMute.mp4')} // Can be a URL or a local file.
+          // ref={ref => {
+          //   this.player = ref;
+          // }} // Store reference
           onBuffer={this.onBuffer} // Callback when remote video is buffering
           onError={this.videoError} // Callback when video cannot be loaded
           style={styles.backgroundVideo}
@@ -47,7 +46,13 @@ export default class GetStarted extends Component {
             <View style={{width: '100%'}}>
               <ButtonComponent
                 onPress={() => this.props.navigation.navigate('Login')}
-                style={{backgroundColor: Colors.darkGrey, fontSize: 12}}
+                style={{
+                  backgroundColor: Colors.darkGrey,
+                  fontSize: 12,
+                  borderColor: Colors.accordionBorderColor,
+                  borderWidth: 1,
+                  color:Colors.accordionBorderColor
+                }}
                 borderRadius={40}>
                 Get Started
               </ButtonComponent>

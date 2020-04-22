@@ -8,12 +8,14 @@ const TextComponent = props => {
   const getFontFamily = type => {
     switch (type) {
       case FontType.REGULAR:
-        return 'OpenSans-Regular';
+        return 'Proxima Nova Regular';
       case FontType.LIGHT:
-        return 'OpenSans-Light';
+        return 'Proxima Nova Alt Light';
+      case FontType.SEMIBOLD:
+        return 'Proxima Nova Condensed Semibold';
       case FontType.BOLD:
       default:
-        return 'OpenSans-Bold';
+        return 'Proxima Nova Bold';
     }
   };
   return (

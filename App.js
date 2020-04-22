@@ -19,7 +19,7 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <TabNavigator />
+        <MyStack />
       </NavigationContainer>
     </>
   );
