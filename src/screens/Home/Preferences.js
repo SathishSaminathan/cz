@@ -8,7 +8,7 @@ import {
 } from "react-native";
 // import CheckBox from '@react-native-community/checkbox';
 import CheckBox from "react-native-check-box";
-import ModalDropdown from "react-native-modal-dropdown";
+// import ModalDropdown from "react-native-modal-dropdown";
 import { Colors } from "../../constants/ThemeConstants";
 import HeaderComponent from "../../components/Shared/HeaderComponent";
 import TextComponent from "../../components/Shared/TextComponent";
@@ -153,7 +153,7 @@ class Preferences extends Component {
                       >
                         Number Starts with
                       </TextComponent>
-                      <ModalDropdown
+                      {/* <ModalDropdown
                         onSelect={(v, startsWith) =>
                           this.setState({ startsWith })
                         }
@@ -198,7 +198,7 @@ class Preferences extends Component {
                             name="down"
                           />
                         </View>
-                      </ModalDropdown>
+                      </ModalDropdown> */}
                     </View>
                   </View>
                   <View
@@ -229,7 +229,7 @@ class Preferences extends Component {
                       >
                         Number Ends with
                       </TextComponent>
-                      <ModalDropdown
+                      {/* <ModalDropdown
                         onSelect={(v, endsWith) => this.setState({ endsWith })}
                         dropdownStyle={{
                           // backgroundColor: 'red',
@@ -272,7 +272,7 @@ class Preferences extends Component {
                             name="down"
                           />
                         </View>
-                      </ModalDropdown>
+                      </ModalDropdown> */}
                     </View>
                   </View>
                   {temp.splice(0, 3).map((data, i) => (
@@ -331,7 +331,7 @@ class Preferences extends Component {
                       >
                         Select your floor number
                       </TextComponent>
-                      <ModalDropdown
+                      {/* <ModalDropdown
                         onSelect={(v, floorNumber) =>
                           this.setState({ floorNumber })
                         }
@@ -376,7 +376,7 @@ class Preferences extends Component {
                             name="down"
                           />
                         </View>
-                      </ModalDropdown>
+                      </ModalDropdown> */}
                     </View>
                   </View>
                 </View>

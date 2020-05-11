@@ -6,7 +6,7 @@ import {
   TouchableNativeFeedback,
   TextInput,
 } from "react-native";
-import ModalDropdown from "react-native-modal-dropdown";
+// import ModalDropdown from "react-native-modal-dropdown";
 import { Colors } from "../../constants/ThemeConstants";
 import HeaderComponent from "../../components/Shared/HeaderComponent";
 import TextComponent from "../../components/Shared/TextComponent";
@@ -78,7 +78,7 @@ const PreferredTravelPartners = (props) => (
             />
           </View>
           <View style={{ flex: 8 }}>
-            <ModalDropdown
+            {/* <ModalDropdown
               dropdownStyle={{
                 // backgroundColor: 'red',
                 width: "40%",
@@ -112,7 +112,7 @@ const PreferredTravelPartners = (props) => (
                 </TextComponent>
                 <IconComponent type={IconType.AntDesign} name="down" />
               </View>
-            </ModalDropdown>
+            </ModalDropdown> */}
           </View>
         </View>
         <View

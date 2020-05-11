@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, ScrollView, TextInput } from "react-native";
-import ModalDropdown from "react-native-modal-dropdown";
+// import ModalDropdown from "react-native-modal-dropdown";
 import { TextInputMask } from "react-native-masked-text";
 
 import HeaderComponent from "../../components/Shared/HeaderComponent";
@@ -42,7 +42,7 @@ export default class AddCard extends Component {
             >
               Card Type
             </TextComponent>
-            <ModalDropdown
+            {/* <ModalDropdown
               dropdownStyle={{
                 // backgroundColor: 'red',
                 width: "91%",
@@ -76,7 +76,7 @@ export default class AddCard extends Component {
                 </TextComponent>
                 <IconComponent type={IconType.AntDesign} name="down" />
               </View>
-            </ModalDropdown>
+            </ModalDropdown> */}
           </View>
           <View style={{ paddingTop: 20 }}>
             <TextComponent
@@ -231,7 +231,7 @@ export default class AddCard extends Component {
                 >
                   Purpose
                 </TextComponent>
-                <ModalDropdown
+                {/* <ModalDropdown
                   dropdownStyle={{
                     // backgroundColor: 'red',
                     width: "91%",
@@ -265,7 +265,7 @@ export default class AddCard extends Component {
                     </TextComponent>
                     <IconComponent type={IconType.AntDesign} name="down" />
                   </View>
-                </ModalDropdown>
+                </ModalDropdown> */}
               </View>
               <View style={{ paddingTop: 20 }}>
                 <TextComponent
