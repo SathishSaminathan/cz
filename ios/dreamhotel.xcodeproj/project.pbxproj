@@ -50,6 +50,7 @@
 		2AC3185699E144058DCF77E6 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC2DF8153F74BD39FB9F010 /* Octicons.ttf */; };
 		2DEFE924E55142F4BD3B1F4E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5A3A08BCB4082B8012A8D /* SimpleLineIcons.ttf */; };
 		F99D89EE6E824837A64A0A55 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E385F3F06ECD48FCAA536C06 /* Zocial.ttf */; };
+		88449247ED66464DA7B52AF6 /* Proxima Nova Condensed Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E3656CEB6FB44038F8802C9 /* Proxima Nova Condensed Semibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		0CC2DF8153F74BD39FB9F010 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2FE5A3A08BCB4082B8012A8D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E385F3F06ECD48FCAA536C06 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4E3656CEB6FB44038F8802C9 /* Proxima Nova Condensed Semibold.otf */ = {isa = PBXFileReference; name = "Proxima Nova Condensed Semibold.otf"; path = "../src/assets/fonts/Proxima Nova Condensed Semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				0CC2DF8153F74BD39FB9F010 /* Octicons.ttf */,
 				2FE5A3A08BCB4082B8012A8D /* SimpleLineIcons.ttf */,
 				E385F3F06ECD48FCAA536C06 /* Zocial.ttf */,
+				4E3656CEB6FB44038F8802C9 /* Proxima Nova Condensed Semibold.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				2AC3185699E144058DCF77E6 /* Octicons.ttf in Resources */,
 				2DEFE924E55142F4BD3B1F4E /* SimpleLineIcons.ttf in Resources */,
 				F99D89EE6E824837A64A0A55 /* Zocial.ttf in Resources */,
+				88449247ED66464DA7B52AF6 /* Proxima Nova Condensed Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
