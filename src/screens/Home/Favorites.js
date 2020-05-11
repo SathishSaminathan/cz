@@ -13,6 +13,7 @@ import ImageComponent from '../../components/Shared/ImageComponent';
 import {Images} from '../../assets/images';
 import IconComponent from '../../components/Shared/IconComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
+import Ripple from 'react-native-material-ripple';
 
 const data = [
   {
@@ -34,7 +35,7 @@ const Favorites = (props) => (
     <View style={{padding: 20, paddingVertical: 10}}>
       <View style={{paddingVertical: 5}}>
         {data.map((data, i) => (
-          <TouchableNativeFeedback key={i}>
+          <Ripple key={i}>
             <View
               key={i}
               style={{
@@ -74,7 +75,7 @@ const Favorites = (props) => (
                 />
               </View>
             </View>
-          </TouchableNativeFeedback>
+          </Ripple>
         ))}
       </View>
     </View>

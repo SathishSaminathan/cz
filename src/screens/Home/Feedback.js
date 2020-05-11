@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import {
-  Text,
   View,
-  TouchableOpacity,
   ScrollView,
   TextInput,
 } from 'react-native';
 import {Colors} from '../../constants/ThemeConstants';
 import HeaderComponent from '../../components/Shared/HeaderComponent';
 import TextComponent from '../../components/Shared/TextComponent';
-import {FontType, IconType} from '../../constants/AppConstants';
+import {FontType} from '../../constants/AppConstants';
 import ImageComponent from '../../components/Shared/ImageComponent';
 import {Images} from '../../assets/images';
-import IconComponent from '../../components/Shared/IconComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import {AirbnbRating} from 'react-native-ratings';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
@@ -154,7 +151,7 @@ class Feedback extends Component {
                               ? Colors.themeBlack
                               : Colors.white,
                             fontSize: 13,
-                            height: 40,
+                            // height: 40,
                             paddingHorizontal: 13,
                             // marginRight: 10,
                             marginBottom: 5,

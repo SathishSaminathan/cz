@@ -14,6 +14,7 @@ import {Images} from '../../assets/images';
 import IconComponent from '../../components/Shared/IconComponent';
 import SwitchComponent from '../../components/Shared/SwitchComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
+import Ripple from 'react-native-material-ripple';
 
 const data = [
   {
@@ -52,7 +53,7 @@ const EmailSubscriptions = (props) => (
         Dream Hotel News and Information
       </TextComponent>
       <View style={{paddingVertical: 5}}>
-        <TouchableNativeFeedback>
+        <Ripple>
           <View
             style={{
               borderTopWidth: 0.5,
@@ -74,8 +75,8 @@ const EmailSubscriptions = (props) => (
               <SwitchComponent status={true}></SwitchComponent>
             </View>
           </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback>
+        </Ripple>
+        <Ripple>
           <View
             style={{
               borderTopWidth: 0.5,
@@ -97,8 +98,8 @@ const EmailSubscriptions = (props) => (
               <SwitchComponent status={false}></SwitchComponent>
             </View>
           </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback>
+        </Ripple>
+        <Ripple>
           <View
             style={{
               borderTopWidth: 0.5,
@@ -120,7 +121,7 @@ const EmailSubscriptions = (props) => (
               <IconComponent type={IconType.AntDesign} name="right" />
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Ripple>
       </View>
     </View>
     <PoweredBY />

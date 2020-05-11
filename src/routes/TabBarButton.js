@@ -1,31 +1,31 @@
-import React from 'react';
-import {View, TouchableNativeFeedback, TouchableOpacity} from 'react-native';
+import React from "react";
+import { View, TouchableNativeFeedback, TouchableOpacity } from "react-native";
 
-import TextComponent from '../components/Shared/TextComponent';
-import {Colors} from '../constants/ThemeConstants';
-import IconComponent from '../components/Shared/IconComponent';
-import {IconType} from '../constants/AppConstants';
+import TextComponent from "../components/Shared/TextComponent";
+import { Colors } from "../constants/ThemeConstants";
+import IconComponent from "../components/Shared/IconComponent";
+import { IconType } from "../constants/AppConstants";
 
-const TabBarButton = ({state, descriptors, navigation}) => {
+const TabBarButton = ({ state, descriptors, navigation }) => {
   //   console.log(props, 'props');
   //   const {routeName, onPress, focused} = props;
   const iconMap = {
-    Home: 'home',
-    Profile: 'account-circle-outline',
-    Wishlist: 'heart',
-    MapView: 'map',
-    Stays: 'briefcase-outline',
-    Offers: 'tag-outline',
-    Settings: 'settings',
-    Fashion: 'layout',
-    Beauty: 'instagram',
-    Bookings: 'message-square',
-    Notifications: 'bell',
+    Home: "home",
+    Profile: "account-circle-outline",
+    Wishlist: "heart",
+    MapView: "map",
+    Stays: "briefcase-outline",
+    Offers: "tag-outline",
+    Settings: "settings",
+    Fashion: "layout",
+    Beauty: "instagram",
+    Bookings: "message-square",
+    Notifications: "bell",
   };
   return (
-    <View style={{flexDirection: 'row', height: 60}}>
+    <View style={{ flexDirection: "row", height: 60 }}>
       {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
+        const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -37,7 +37,7 @@ const TabBarButton = ({state, descriptors, navigation}) => {
 
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
             canPreventDefault: true,
           });
@@ -49,68 +49,72 @@ const TabBarButton = ({state, descriptors, navigation}) => {
 
         const onLongPress = () => {
           navigation.emit({
-            type: 'tabLongPress',
+            type: "tabLongPress",
             target: route.key,
           });
         };
 
-        if (label !== 'PaymentSuccess' && label !== 'AddCardStack') {
+        if (label !== "PaymentSuccess" && label !== "AddCardStack") {
           return (
-            <View style={{flex: 1}} key={index}>
+            <View style={{ flex: 1 }} key={index}>
               {isFocused && (
                 <View
                   style={{
                     height: 1.3,
                     backgroundColor: Colors.darkGrey,
-                    position: 'absolute',
+                    position: "absolute",
                     top: 0,
-                    left: '20%',
-                    right: '20%',
+                    left: "20%",
+                    right: "20%",
                     zIndex: 1,
                   }}
                 />
               )}
-              <TouchableNativeFeedback
+              {/* <TouchableNativeFeedback
                 // background={TouchableNativeFeedback.Ripple('red')}
                 // containerStyle={{
                 //   backgroundColor: Colors.red,
                 // }}
                 delayPressIn={0}
-                onPress={onPress}>
-                <View
+                onPress={onPress}> */}
+              <TouchableOpacity
+                onPress={onPress}
+                activeOpacity={0.8}
+                style={[
+                  {
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: Colors.white,
+                  },
+                ]}
+              >
+                <IconComponent
+                  type={IconType.MaterialCommunityIcons}
+                  name={iconMap[label]}
+                  size={isFocused ? 20 : 20}
                   style={[
-                    {
-                      flex: 1,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      backgroundColor: Colors.white,
+                    isFocused && {
+                      // backgroundColor: Colors.primaryThemeColor,
+                      // padding: 8,
+                      borderRadius: 10,
+                      // elevation: 10,
                     },
-                  ]}>
-                  <IconComponent
-                    type={IconType.MaterialCommunityIcons}
-                    name={iconMap[label]}
-                    size={isFocused ? 20 : 20}
-                    style={[
-                      isFocused && {
-                        // backgroundColor: Colors.primaryThemeColor,
-                        // padding: 8,
-                        borderRadius: 10,
-                        // elevation: 10,
-                      },
-                      {alignSelf: 'center'},
-                    ]}
-                    color={isFocused ? Colors.darkGrey : Colors.lightGrey}
-                  />
-                  <TextComponent
-                    style={{
-                      color: isFocused ? Colors.darkGrey : Colors.lightGrey,
-                      fontSize: 12,
-                      // fontWeight: isFocused ? 'bold' : 'normal',
-                    }}>
-                    {label}
-                  </TextComponent>
-                </View>
-              </TouchableNativeFeedback>
+                    { alignSelf: "center" },
+                  ]}
+                  color={isFocused ? Colors.darkGrey : Colors.lightGrey}
+                />
+                <TextComponent
+                  style={{
+                    color: isFocused ? Colors.darkGrey : Colors.lightGrey,
+                    fontSize: 12,
+                    // fontWeight: isFocused ? 'bold' : 'normal',
+                  }}
+                >
+                  {label}
+                </TextComponent>
+              </TouchableOpacity>
+              {/* </TouchableNativeFeedback> */}
             </View>
           );
         }

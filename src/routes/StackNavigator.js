@@ -40,6 +40,9 @@ import CompletethePayment from '../screens/Home/CompletethePayment';
 import Events from '../screens/Home/Events';
 import PersonalInformation from '../screens/Account/PersonalInformation';
 import UserName from '../screens/Account/UserName';
+import IOSDate from '../screens/Home/IOSDate';
+import IOSLocation from '../screens/Home/IOSLocation';
+import IOSRoomFilter from '../screens/Home/IOSRoomFilter';
 
 const Stack = createStackNavigator();
 
@@ -442,6 +445,30 @@ function HomeStack() {
       <Stack.Screen
         name="Location"
         component={Location}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="IOSLocation"
+        component={IOSLocation}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="IOSDate"
+        component={IOSDate}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        }}
+      />
+      <Stack.Screen
+        name="IOSRoomFilter"
+        component={IOSRoomFilter}
         options={{
           // title: 'Notifications',
           cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,

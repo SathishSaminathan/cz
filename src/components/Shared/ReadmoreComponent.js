@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {View} from 'react-native';
 import ReadMore from 'react-native-read-more-text';
 import TextComponent from './TextComponent';
 import {Colors} from '../../constants/ThemeConstants';

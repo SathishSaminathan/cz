@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
-import TextComponent from '../components/Shared/TextComponent';
-import HeaderComponent from '../components/Shared/HeaderComponent';
-import ImageComponent from '../components/Shared/ImageComponent';
-import {Images} from '../assets/images';
-import {Colors} from '../constants/ThemeConstants';
-import Ripple from 'react-native-material-ripple';
-import IconComponent from '../components/Shared/IconComponent';
-import PoweredBy from '../components/Shared/PoweredBy';
-import {IconType, FontType} from '../constants/AppConstants';
+import React, { Component } from "react";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import TextComponent from "../components/Shared/TextComponent";
+import HeaderComponent from "../components/Shared/HeaderComponent";
+import ImageComponent from "../components/Shared/ImageComponent";
+import { Images } from "../assets/images";
+import { Colors } from "../constants/ThemeConstants";
+import Ripple from "react-native-material-ripple";
+import IconComponent from "../components/Shared/IconComponent";
+import PoweredBy from "../components/Shared/PoweredBy";
+import { IconType, FontType } from "../constants/AppConstants";
 
 export default class Offers extends Component {
   constructor(props) {
@@ -16,15 +16,15 @@ export default class Offers extends Component {
     this.state = {
       data: [
         {
-          name: 'Book Your Stay for 4days, Get 30% Off',
-          desc: 'Book your hotel on March, 22 2020',
-          timing: '1 day ago',
+          name: "Book Your Stay for 4days, Get 30% Off",
+          desc: "Book your hotel on March, 22 2020",
+          timing: "1 day ago",
           image: Images.rm2,
         },
         {
-          name: 'Save Bike rental',
-          desc: 'Book your hotel on March, 22 2020',
-          timing: '1 day ago',
+          name: "Save Bike rental",
+          desc: "Book your hotel on March, 22 2020",
+          timing: "1 day ago",
           image: Images.offer1,
         },
       ],
@@ -32,21 +32,22 @@ export default class Offers extends Component {
   }
 
   renderList = () => {
-    const {data} = this.state;
+    const { data } = this.state;
     return data.map((data, i) => (
       <View
         key={i}
         rippleContainerBorderRadius={5}
         style={{
-          width: '95%',
+          width: "95%",
           height: 234,
           marginTop: 10,
           borderRadius: 5,
-          overflow: 'hidden',
+          overflow: "hidden",
           elevation: 5,
-        }}>
-        <Ripple style={{flex: 7}}>
-          <View style={{flex: 1, borderRadius: 5, overflow: 'hidden'}}>
+        }}
+      >
+        <Ripple style={{ flex: 7 }}>
+          <View style={{ flex: 1, borderRadius: 5, overflow: "hidden" }}>
             <ImageComponent source={data.image} />
           </View>
         </Ripple>
@@ -54,22 +55,25 @@ export default class Offers extends Component {
           style={{
             flex: 3,
             backgroundColor: Colors.white,
-            flexDirection: 'row',
-          }}>
+            flexDirection: "row",
+          }}
+        >
           <View
-            style={{flex: 8, paddingHorizontal: 15, justifyContent: 'center'}}>
-            <TextComponent style={{fontSize: 14}} type={FontType.BOLD}>
+            style={{ flex: 8, paddingHorizontal: 15, justifyContent: "center" }}
+          >
+            <TextComponent style={{ fontSize: 14 }} type={FontType.BOLD}>
               {data.name}
             </TextComponent>
-            <TextComponent style={{color: Colors.searchText}}>
+            <TextComponent style={{ color: Colors.searchText }}>
               {data.desc}
             </TextComponent>
-            <TextComponent style={{color: Colors.searchText}}>
+            <TextComponent style={{ color: Colors.searchText }}>
               {data.timing}
             </TextComponent>
           </View>
           <View
-            style={{alignItems: 'center', justifyContent: 'center', flex: 2}}>
+            style={{ alignItems: "center", justifyContent: "center", flex: 2 }}
+          >
             <TouchableOpacity
               //   onPress={() => alert('hai')}
               style={{
@@ -77,7 +81,8 @@ export default class Offers extends Component {
                 borderRadius: 50,
                 borderWidth: 1,
                 borderColor: Colors.accordionBorderColor,
-              }}>
+              }}
+            >
               <IconComponent type={IconType.AntDesign} name="close" />
             </TouchableOpacity>
           </View>
@@ -87,18 +92,29 @@ export default class Offers extends Component {
   };
 
   render() {
-    const {data} = this.state;
+    const { data } = this.state;
     return (
-      <View style={{flex: 1, backgroundColor: Colors.staysBackground}}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: Colors.white,
+        }}
+      >
         <HeaderComponent hasBack title="Offers" {...this.props} />
-        <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+        <ScrollView
+          contentContainerStyle={{
+            alignItems: "center",
+            backgroundColor: Colors.staysBackground,
+          }}
+        >
           {this.renderList()}
           <View
             style={{
               paddingTop: 10,
-              width: '95%',
-            }}>
-            <TextComponent style={{fontSize: 18}} type={FontType.BOLD}>
+              width: "95%",
+            }}
+          >
+            <TextComponent style={{ fontSize: 18 }} type={FontType.BOLD}>
               Request an Uber
             </TextComponent>
             <View
@@ -108,61 +124,66 @@ export default class Offers extends Component {
                 borderRadius: 5,
                 padding: 10,
                 marginTop: 10,
-              }}>
-              <View style={{flex: 2}}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              }}
+            >
+              <View style={{ flex: 2 }}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <View
                     style={{
                       width: 40,
-                      height: 40,
+                      // height: 40,
                       backgroundColor: Colors.themeBlack,
                       borderRadius: 20,
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      alignItems: "center",
+                      justifyContent: "center",
                       marginRight: 10,
-                    }}>
+                    }}
+                  >
                     <ImageComponent
                       source={Images.uberBook}
                       resizeMode="contain"
-                      style={{width: '60%'}}
+                      style={{ width: "60%" }}
                     />
                   </View>
-                  <TextComponent style={{fontSize: 14}} type={FontType.BOLD}>
+                  <TextComponent style={{ fontSize: 14 }} type={FontType.BOLD}>
                     Uber
                   </TextComponent>
                 </View>
               </View>
-              <View style={{flex: 5, borderRadius: 5, overflow: 'hidden'}}>
+              <View style={{ flex: 5, borderRadius: 5, overflow: "hidden" }}>
                 <ImageComponent source={Images.uber} />
               </View>
               <View
                 style={{
                   flex: 3,
                   backgroundColor: Colors.white,
-                  flexDirection: 'row',
-                }}>
+                  flexDirection: "row",
+                }}
+              >
                 <View
                   style={{
                     flex: 8,
                     // paddingHorizontal: 15,
-                    justifyContent: 'center',
-                  }}>
-                  <TextComponent style={{fontSize: 14}} type={FontType.BOLD}>
+                    justifyContent: "center",
+                  }}
+                >
+                  <TextComponent style={{ fontSize: 14 }} type={FontType.BOLD}>
                     {data[0].name}
                   </TextComponent>
-                  <TextComponent style={{color: Colors.searchText}}>
+                  <TextComponent style={{ color: Colors.searchText }}>
                     {data[0].desc}
                   </TextComponent>
-                  <TextComponent style={{color: Colors.searchText}}>
+                  <TextComponent style={{ color: Colors.searchText }}>
                     {data[0].timing}
                   </TextComponent>
                 </View>
                 <View
                   style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    alignItems: "center",
+                    justifyContent: "center",
                     flex: 2,
-                  }}>
+                  }}
+                >
                   <TouchableOpacity
                     //   onPress={() => alert('hai')}
                     style={{
@@ -170,7 +191,8 @@ export default class Offers extends Component {
                       borderRadius: 50,
                       borderWidth: 1,
                       borderColor: Colors.accordionBorderColor,
-                    }}>
+                    }}
+                  >
                     <IconComponent type={IconType.AntDesign} name="close" />
                   </TouchableOpacity>
                 </View>
@@ -180,9 +202,10 @@ export default class Offers extends Component {
           <View
             style={{
               paddingTop: 10,
-              width: '95%',
-            }}>
-            <TextComponent style={{fontSize: 18}} type={FontType.BOLD}>
+              width: "95%",
+            }}
+          >
+            <TextComponent style={{ fontSize: 18 }} type={FontType.BOLD}>
               Refer and earn
             </TextComponent>
             <View
@@ -192,28 +215,35 @@ export default class Offers extends Component {
                 borderRadius: 5,
                 padding: 10,
                 marginTop: 10,
-                flexDirection: 'row',
-              }}>
-              <View style={{flex: 6, borderRadius: 5, overflow: 'hidden'}}>
-                <ImageComponent source={Images.referImage} resizeMode="contain" />
+                flexDirection: "row",
+              }}
+            >
+              <View style={{ flex: 6, borderRadius: 5, overflow: "hidden" }}>
+                <ImageComponent
+                  source={Images.referImage}
+                  resizeMode="contain"
+                />
               </View>
               <View
                 style={{
                   flex: 4,
                   backgroundColor: Colors.white,
-                  flexDirection: 'row',
-                }}>
+                  flexDirection: "row",
+                }}
+              >
                 <View
                   style={{
                     flex: 8,
                     // paddingHorizontal: 15,
-                    justifyContent: 'center',
-                  }}>
-                  <TextComponent style={{fontSize: 18}} type={FontType.BOLD}>
+                    justifyContent: "center",
+                  }}
+                >
+                  <TextComponent style={{ fontSize: 18 }} type={FontType.BOLD}>
                     Refer a friend
                   </TextComponent>
                   <TextComponent
-                    style={{color: Colors.searchText, fontSize: 9}}>
+                    style={{ color: Colors.searchText, fontSize: 9 }}
+                  >
                     Classifieds are usually the first place you think of when
                     you are getting ready to make a purchase. Whether you
                   </TextComponent>

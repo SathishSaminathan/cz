@@ -6,7 +6,6 @@ export const Colors = {
   secondaryColor: '#ffe500',
   themeBlack: '#191919',
   white: '#ffffff',
-  warningRed: '#E2A0A1',
   black: '#484848',
   textBlack: '#5D5B5B',
   textWhite: '#A9A9A9',
@@ -33,4 +32,11 @@ export const Colors = {
   accordionBorderColor: '#D2D2D2',
   accDividerColor: '#F4F4F4',
   orderRed: '#DA3743',
+  deaths: '#ff5959',
+  confirmed: '#ffb259',
+  recovered: '#4cd97b',
+  active: '#4cb5ff',
+  serious: '#9059ff',
+  critical: '#178AFF',
+  cancelblue:"#0180E3"
 };

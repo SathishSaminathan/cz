@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+// import { Video } from 'expo-av';
 import Video from 'react-native-video';
 
 const VideoComponent = props => {
@@ -19,6 +20,7 @@ const VideoComponent = props => {
         rate={1.0}
         ignoreSilentSwitch={'obey'}
         {...props}
+        shouldPlay
       />
     </>
   );

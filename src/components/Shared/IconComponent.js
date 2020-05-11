@@ -1,5 +1,4 @@
 import React from 'react';
-import {IconType, FontType} from '../../constants/AppConstants';
 
 const IconComponent = ({style, type, name, size, color, onPress}) => {
   const renderIcons = () => {

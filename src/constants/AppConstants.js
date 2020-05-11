@@ -1,3 +1,4 @@
+// import { Ionicons, FontAwesome, AntDesign, MaterialCommunityIcons, Feather, Entypo, EvilIcons } from '@expo/vector-icons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';

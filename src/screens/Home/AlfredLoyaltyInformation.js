@@ -107,11 +107,12 @@ const AlfredLoyaltyInformation = (props) => (
               <Ripple
                 style={{
                   backgroundColor: Colors.themeBlack,
-                  height: 40,
+                  height: 48,
                   width: '49%',
                   borderRadius: 5,
                   overflow: 'hidden',
                   marginRight: 5,
+                  paddingHorizontal:10
                 }}
                 borderRadius={5}>
                 <ImageComponent
@@ -125,7 +126,7 @@ const AlfredLoyaltyInformation = (props) => (
                     backgroundColor: '#000',
                     fontSize: 14,
                     color: Colors.white,
-                    height: 40,
+                    height: 48,
                     elevation: 0,
                   }}>
                   Save to phone

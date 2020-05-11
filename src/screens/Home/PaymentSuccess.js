@@ -342,7 +342,7 @@ const PaymentSuccess = ({
                       backgroundColor: Colors.themeBlack,
                       fontSize: 14,
                       color: Colors.white,
-                      height: 34,
+                      // height: 34,
                     }}>
                     Done
                   </ButtonComponent>

@@ -1,15 +1,9 @@
 import React from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import { View, ScrollView} from 'react-native';
 import {Colors} from '../../constants/ThemeConstants';
 import HeaderComponent from '../../components/Shared/HeaderComponent';
-import {ReadmoreComponent} from '../../components/Shared/ReadmoreComponent';
-import ImageComponent from '../../components/Shared/ImageComponent';
 import {Images} from '../../assets/images';
-import TextComponent from '../../components/Shared/TextComponent';
-import {FontType} from '../../constants/AppConstants';
-import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
-import Ripple from 'react-native-material-ripple';
 import RecommendationCard from './RecommendationCard';
 
 const data = [
