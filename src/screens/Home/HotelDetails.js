@@ -11,6 +11,7 @@ import Divider from '../../components/Shared/Divider';
 import {ReadmoreComponent} from '../../components/Shared/ReadmoreComponent';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
+import { StatusBarHeight } from '../../helpers/styleHelper';
 
 const data = [
   {
@@ -48,7 +49,7 @@ export default class HotelDetails extends Component {
               left: 5,
               zIndex: 1,
               fontSize: 15,
-              top: 5,
+              top: StatusBarHeight,
               padding: 10,
               paddingTop: 15,
             }}>
