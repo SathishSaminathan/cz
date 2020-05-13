@@ -46,13 +46,12 @@ const LoginTextInput = ({password, placeholder, icon}) => {
       <View
         style={{
           flex: 8,
-          paddingVertical: 0,
           alignItems: 'flex-start',
           justifyContent: 'center',
         }}>
         <TextInput
           secureTextEntry={password && !ShowPassword}
-          style={{color: Colors.textWhite, fontSize: 12}}
+          style={{color: Colors.textWhite, fontSize: 12, paddingVertical: '5%'}}
           // defaultValue="sample"
           placeholder={placeholder}
           placeholderTextColor={Colors.textWhite}
