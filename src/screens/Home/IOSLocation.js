@@ -16,6 +16,7 @@ import {IconType, FontType} from '../../constants/AppConstants';
 import TextComponent from '../../components/Shared/TextComponent';
 import TextInputComponent from '../../components/Shared/TextInputComponent';
 import Divider from '../../components/Shared/Divider';
+import {StatusBarHeight} from '../../helpers/styleHelper';
 
 const IOSLocation = (props) => {
   return (
@@ -23,7 +24,7 @@ const IOSLocation = (props) => {
       style={{
         flex: 1,
         backgroundColor: Colors.white,
-        paddingTop: Platform.OS === 'ios' ? 20 : 0,
+        paddingTop: Platform.OS === 'ios' ? StatusBarHeight : 0,
       }}>
       <View style={{flexDirection: 'row', height: 60}}>
         <View
