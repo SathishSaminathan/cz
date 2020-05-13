@@ -6,7 +6,7 @@ import {
   TouchableNativeFeedback,
   ScrollView,
 } from 'react-native';
-// import ModalDropdown from 'react-native-modal-dropdown';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 import {Colors} from '../../constants/ThemeConstants';
 import HeaderComponent from '../../components/Shared/HeaderComponent';
@@ -253,7 +253,7 @@ class ToiletriesRequest extends Component {
                   width: '93%',
                   marginTop: 10,
                 }}>
-                {/* <ModalDropdown
+                <ModalDropdown
                   onSelect={(v, timeline) => this.setState({timeline})}
                   dropdownStyle={{
                     // backgroundColor: 'red',
@@ -290,7 +290,7 @@ class ToiletriesRequest extends Component {
                     </TextComponent>
                     <IconComponent type={IconType.AntDesign} name="down" />
                   </View>
-                </ModalDropdown> */}
+                </ModalDropdown>
               </View>
               <View style={{width: '95%'}}>
                 <ButtonComponent
