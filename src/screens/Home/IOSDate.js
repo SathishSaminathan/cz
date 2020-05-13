@@ -114,36 +114,37 @@ class IOSDate extends React.Component {
     } = this.state;
     return (
       <View style={{flex: 1}}>
-        <View
-          style={{
-            height: 60,
-            flexDirection: 'row',
-            backgroundColor: Colors.white,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingHorizontal: 10,
-            paddingTop: Platform.OS === 'ios' ? StatusBarHeight : 0,
-            paddingBottom: '3%',
-          }}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-            <IconComponent size={15} type={IconType.AntDesign} name="left" />
-          </TouchableOpacity>
-          <TextComponent type={FontType.BOLD} style={{fontSize: 17}}>
-            Dates
-          </TextComponent>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() =>
-              this.props.navigation.navigate('LocationResults', {
-                date: ShowDates,
-              })
-            }>
-            <TextComponent
-              type={FontType.BOLD}
-              style={{fontSize: 17, color: Colors.cancelblue}}>
-              Done
+        <View style={{paddingVertical: '3%'}}>
+          <View
+            style={{
+              height: 60,
+              flexDirection: 'row',
+              backgroundColor: Colors.white,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingHorizontal: 10,
+              paddingTop: Platform.OS === 'ios' ? StatusBarHeight : 0,
+            }}>
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <IconComponent size={15} type={IconType.AntDesign} name="left" />
+            </TouchableOpacity>
+            <TextComponent type={FontType.BOLD} style={{fontSize: 17}}>
+              Dates
             </TextComponent>
-          </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() =>
+                this.props.navigation.navigate('LocationResults', {
+                  date: ShowDates,
+                })
+              }>
+              <TextComponent
+                type={FontType.BOLD}
+                style={{fontSize: 17, color: Colors.cancelblue}}>
+                Done
+              </TextComponent>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={{flex: 1, backgroundColor: Colors.white}}>
