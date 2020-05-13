@@ -301,6 +301,7 @@ class ToiletriesRequest extends Component {
                     color: Colors.white,
                     marginTop: 10,
                     elevation: 0,
+                    fontSize: 15
                   }}>
                   Confirm
                 </ButtonComponent>
