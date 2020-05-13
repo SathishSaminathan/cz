@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  ScrollView,
-  TextInput,
-} from 'react-native';
+import {View, ScrollView, TextInput, Platform} from 'react-native';
 import {Colors} from '../../constants/ThemeConstants';
 import HeaderComponent from '../../components/Shared/HeaderComponent';
 import TextComponent from '../../components/Shared/TextComponent';
@@ -40,6 +36,8 @@ const data = [
     isSelected: true,
   },
 ];
+
+const numberOfLines = 8;
 
 class Feedback extends Component {
   constructor(props) {
@@ -178,9 +176,17 @@ class Feedback extends Component {
                     }}>
                     <TextInput
                       multiline={true}
-                      numberOfLines={8}
+                      // numberOfLines={8}
                       textAlignVertical="top"
                       placeholder="Write your Feedback"
+                      numberOfLines={
+                        Platform.OS === 'ios' ? null : numberOfLines
+                      }
+                      minHeight={
+                        Platform.OS === 'ios' && numberOfLines
+                          ? 20 * numberOfLines
+                          : null
+                      }
                     />
                   </View>
                   <View style={{paddingVertical: 20}}>
