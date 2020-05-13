@@ -14,7 +14,7 @@ import { Colors } from "../constants/ThemeConstants";
 import TextComponent from "../components/Shared/TextComponent";
 import Status from "./Account/Status";
 import Account from "./Account/Account";
-import { widthPerc } from "../helpers/styleHelper";
+import { widthPerc, StatusBarHeight } from "../helpers/styleHelper";
 import { FontType, IconType } from "../constants/AppConstants";
 import IconComponent from "../components/Shared/IconComponent";
 
@@ -67,7 +67,7 @@ class IOSProfile extends Component {
       <View
         style={{
           flex: 1,
-          paddingTop: Platform.OS === "ios" ? 20 : 0,
+          paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
           backgroundColor: Colors.white,
         }}
       >

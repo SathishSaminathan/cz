@@ -5,6 +5,7 @@ import TextComponent from "../../components/Shared/TextComponent";
 import IconComponent from "../../components/Shared/IconComponent";
 import { FontType, IconType } from "../../constants/AppConstants";
 import Ripple from "react-native-material-ripple";
+import { StatusBarHeight } from "../../helpers/styleHelper";
 
 const HeaderComponent = ({
   title,
@@ -16,7 +17,7 @@ const HeaderComponent = ({
 }) => (
   <View
     style={{
-      paddingTop: Platform.OS === "ios" ? 20 : 0,
+      paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
       backgroundColor: Colors.white,
       elevation: 5,
       shadowOpacity: 0.3,

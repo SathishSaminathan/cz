@@ -13,7 +13,7 @@ import TextComponent from "../components/Shared/TextComponent";
 import { Colors } from "../constants/ThemeConstants";
 import ImageComponent from "../components/Shared/ImageComponent";
 import { Images } from "../assets/images";
-import { widthPerc, heightPerc } from "../helpers/styleHelper";
+import { widthPerc, heightPerc, StatusBarHeight } from "../helpers/styleHelper";
 import IconComponent from "../components/Shared/IconComponent";
 import { IconType, FontType } from "../constants/AppConstants";
 import { TouchableNativeFeedback } from "react-native-gesture-handler";
@@ -32,7 +32,7 @@ export default class Home extends Component {
       <View style={styles.container}>
         <View
           style={{
-            height: Platform.OS === "ios" ? 20 : 0,
+            height: Platform.OS === "ios" ? StatusBarHeight : 0,
           }}
         >
           <StatusBar

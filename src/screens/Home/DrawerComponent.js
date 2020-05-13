@@ -14,7 +14,7 @@ import TextComponent from "../../components/Shared/TextComponent";
 import { Colors } from "../../constants/ThemeConstants";
 import ImageComponent from "../../components/Shared/ImageComponent";
 import { Images } from "../../assets/images";
-import { widthPerc, heightPerc } from "../../helpers/styleHelper";
+import { widthPerc, heightPerc, StatusBarHeight } from "../../helpers/styleHelper";
 import IconComponent from "../../components/Shared/IconComponent";
 import { IconType } from "../../constants/AppConstants";
 import { TouchableNativeFeedback } from "react-native-gesture-handler";
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.white,
-    paddingTop: Platform.OS === "ios" ? 20 : 0,
+    paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
   },
   image: {
     flex: 1,

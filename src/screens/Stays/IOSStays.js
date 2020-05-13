@@ -16,6 +16,7 @@ import { IconType, FontType } from "../../constants/AppConstants";
 import Upcoming from "./Upcoming";
 import Past from "./Past";
 import Cancelled from "./Cancelled";
+import { StatusBarHeight } from "../../helpers/styleHelper";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -79,7 +80,7 @@ class IOSStays extends React.Component {
       >
         <View
           style={{
-            paddingTop: Platform.OS === "ios" ? 20 : 0,
+            paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
             backgroundColor: Colors.white,
             shadowOpacity: 0.3,
             shadowRadius: 3,

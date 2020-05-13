@@ -17,6 +17,7 @@ import { IconType, FontType } from "../../constants/AppConstants";
 import moment from "moment";
 import { without } from "lodash";
 import Ripple from "react-native-material-ripple";
+import { StatusBarHeight } from "../../helpers/styleHelper";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -146,7 +147,7 @@ class IOSRoomFilter extends React.Component {
             alignItems: "center",
             justifyContent: "space-between",
             paddingHorizontal: 10,
-            paddingTop: Platform.OS === "ios" ? 20 : 0,
+            paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
           }}
         >
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>

@@ -25,6 +25,7 @@ import HeaderComponent from "../../components/Shared/HeaderComponent";
 import RoomPreferences from "./RoomPreferences";
 import Ripple from "react-native-material-ripple";
 import IOSLocationResults from "./IOSLocationResults";
+import { StatusBarHeight } from "../../helpers/styleHelper";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -110,7 +111,7 @@ const LocationResults = (props) => {
     <View
       style={{
         flex: 1,
-        paddingTop: Platform.OS === "ios" ? 20 : 0,
+        paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
         backgroundColor: Colors.white,
       }}
     >
