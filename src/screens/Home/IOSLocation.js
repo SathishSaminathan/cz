@@ -55,7 +55,7 @@ const IOSLocation = (props) => {
               name="search1"
             />
             <TextInputComponent
-              style={{margin: 0, fontSize: 16}}
+              style={{margin: 0, fontSize: 16, paddingVertical: '5%'}}
               placeholder="Search your Location"
             />
           </View>
