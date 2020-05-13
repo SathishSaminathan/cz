@@ -43,6 +43,7 @@ const IOSLocation = (props) => {
               backgroundColor: 'rgba(118,118,128,0.12)',
               alignItems: 'center',
               borderRadius: 10,
+              paddingVertical: '3%',
               flex: 7,
             }}>
             <IconComponent
@@ -55,7 +56,7 @@ const IOSLocation = (props) => {
               name="search1"
             />
             <TextInputComponent
-              style={{margin: 0, fontSize: 16, paddingVertical: '5%'}}
+              style={{margin: 0, fontSize: 16}}
               placeholder="Search your Location"
             />
           </View>
