@@ -335,6 +335,12 @@ class ToiletriesRequest extends Component {
                       marginBottom: 10,
                       borderRadius: 5,
                       elevation: data.checked ? 5 : 0,
+                      shadowOpacity: data.checked ? 0.5 : 0,
+                      shadowRadius: 3,
+                      shadowOffset: {
+                        height: 0,
+                        width: 0,
+                      },
                       borderColor: '#DBDBDB',
                       borderWidth: !data.checked ? 0.8 : 0,
                       marginHorizontal: '0.9%',
