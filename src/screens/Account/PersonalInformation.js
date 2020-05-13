@@ -14,6 +14,7 @@ import {Images} from '../../assets/images';
 import IconComponent from '../../components/Shared/IconComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import {ScrollView} from 'react-native-gesture-handler';
+import Ripple from 'react-native-material-ripple';
 
 const data = [
   {
@@ -64,7 +65,7 @@ const PersonalInformation = (props) => (
     <ScrollView style={{padding: 20, paddingVertical: 10}}>
       <View style={{paddingVertical: 5}}>
         {data.map((data, i) => (
-          <TouchableNativeFeedback
+          <Ripple
             key={i}
             onPress={() => data.route && props.navigation.navigate(data.route)}>
             <View
@@ -106,7 +107,7 @@ const PersonalInformation = (props) => (
                 />
               </View>
             </View>
-          </TouchableNativeFeedback>
+          </Ripple>
         ))}
       </View>
       <View
