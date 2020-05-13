@@ -96,7 +96,7 @@ const Favorites = (props) => (
             backgroundColor: Colors.themeBlack,
             fontSize: 14,
             color: Colors.white,
-            height: 34,
+            // height: 55,
             elevation: 5,
           }}>
           Update
