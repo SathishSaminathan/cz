@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   View,
   StyleSheet,
@@ -6,19 +6,19 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-} from "react-native";
-import { Calendar } from "react-native-calendario";
-import { Colors } from "../../constants/ThemeConstants";
-import TextComponent from "../../components/Shared/TextComponent";
-import ButtonComponent from "../../components/Shared/ButtonComponent";
-import SearchLocation from "./SearchLocation";
-import IconComponent from "../../components/Shared/IconComponent";
-import { IconType, FontType } from "../../constants/AppConstants";
-import moment from "moment";
-import { without } from "lodash";
-import { StatusBarHeight } from "../../helpers/styleHelper";
+} from 'react-native';
+import {Calendar} from 'react-native-calendario';
+import {Colors} from '../../constants/ThemeConstants';
+import TextComponent from '../../components/Shared/TextComponent';
+import ButtonComponent from '../../components/Shared/ButtonComponent';
+import SearchLocation from './SearchLocation';
+import IconComponent from '../../components/Shared/IconComponent';
+import {IconType, FontType} from '../../constants/AppConstants';
+import moment from 'moment';
+import {without} from 'lodash';
+import {StatusBarHeight} from '../../helpers/styleHelper';
 
-const initialLayout = { width: Dimensions.get("window").width };
+const initialLayout = {width: Dimensions.get('window').width};
 
 class IOSDate extends React.Component {
   constructor(props) {
@@ -26,11 +26,11 @@ class IOSDate extends React.Component {
     this.state = {
       LocationName: null,
       SelectedDate: null,
-      ActiveTab: "Location",
+      ActiveTab: 'Location',
       startDate: moment(),
       endDate: null,
       DaysCount: null,
-      ShowDates: moment().format("DD/MM").replace(/\b0/g, ""),
+      ShowDates: moment().format('DD/MM').replace(/\b0/g, ''),
     };
   }
 
@@ -48,27 +48,27 @@ class IOSDate extends React.Component {
     }
 
     if (startDate && endDate) {
-      let a = moment(startDate, "DD/MM");
-      let b = moment(endDate, "DD/MM");
-      days = b.diff(a, "days") + 1;
+      let a = moment(startDate, 'DD/MM');
+      let b = moment(endDate, 'DD/MM');
+      days = b.diff(a, 'days') + 1;
     }
     console.log(
-      "temp",
+      'temp',
       temp,
-      moment(startDate, "DD/MM"),
-      moment(endDate, "DD/MM"),
-      days
+      moment(startDate, 'DD/MM'),
+      moment(endDate, 'DD/MM'),
+      days,
     );
     // setSelectedDate(dates);
   };
 
   setLocationName = (LocationName) => {
-    this.setState({ LocationName, ActiveTab: "Date" });
+    this.setState({LocationName, ActiveTab: 'Date'});
   };
 
-  onChange = ({ startDate, endDate }) => {
-    let dates = Object.values({ startDate, endDate }).map(
-      (v) => v && moment(v).format("DD/MM").replace(/\b0/g, "")
+  onChange = ({startDate, endDate}) => {
+    let dates = Object.values({startDate, endDate}).map(
+      (v) => v && moment(v).format('DD/MM').replace(/\b0/g, ''),
     );
     let temp = without(dates, undefined);
     let sd = null;
@@ -82,12 +82,13 @@ class IOSDate extends React.Component {
       ed = temp[1];
     }
     ShowDates = temp.map(
-      (v, i) => `${v}${temp.length !== 1 && i !== temp.length - 1 ? " - " : ""}`
+      (v, i) =>
+        `${v}${temp.length !== 1 && i !== temp.length - 1 ? ' - ' : ''}`,
     );
     if (sd && ed) {
-      let a = moment(sd, "DD/MM");
-      let b = moment(ed, "DD/MM");
-      DaysCount = b.diff(a, "days") + 1;
+      let a = moment(sd, 'DD/MM');
+      let b = moment(ed, 'DD/MM');
+      DaysCount = b.diff(a, 'days') + 1;
     } else if (sd) {
       DaysCount = 1;
     }
@@ -101,7 +102,7 @@ class IOSDate extends React.Component {
     //   ShowDates,
     // );
 
-    this.setState({ startDate, endDate, DaysCount, ShowDates });
+    this.setState({startDate, endDate, DaysCount, ShowDates});
   };
   render() {
     const {
@@ -112,55 +113,52 @@ class IOSDate extends React.Component {
       ShowDates,
     } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <View
           style={{
             height: 60,
-            flexDirection: "row",
+            flexDirection: 'row',
             backgroundColor: Colors.white,
-            alignItems: "center",
-            justifyContent: "space-between",
+            alignItems: 'center',
+            justifyContent: 'space-between',
             paddingHorizontal: 10,
-            paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
-          }}
-        >
+            paddingTop: Platform.OS === 'ios' ? StatusBarHeight : 0,
+            paddingBottom: '3%',
+          }}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <IconComponent size={15} type={IconType.AntDesign} name="left" />
           </TouchableOpacity>
-          <TextComponent type={FontType.BOLD} style={{ fontSize: 17 }}>
+          <TextComponent type={FontType.BOLD} style={{fontSize: 17}}>
             Dates
           </TextComponent>
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() =>
-              this.props.navigation.navigate("LocationResults", {
+              this.props.navigation.navigate('LocationResults', {
                 date: ShowDates,
               })
-            }
-          >
+            }>
             <TextComponent
               type={FontType.BOLD}
-              style={{ fontSize: 17, color: Colors.cancelblue }}
-            >
+              style={{fontSize: 17, color: Colors.cancelblue}}>
               Done
             </TextComponent>
           </TouchableOpacity>
         </View>
 
-        <View style={{ flex: 1, backgroundColor: Colors.white }}>
+        <View style={{flex: 1, backgroundColor: Colors.white}}>
           <View
             style={{
-              flexDirection: "row",
-              width: "100%",
+              flexDirection: 'row',
+              width: '100%',
               height: 31,
-              alignItems: "center",
-              alignSelf: "center",
+              alignItems: 'center',
+              alignSelf: 'center',
               backgroundColor: Colors.accDividerColor,
-            }}
-          >
-            {["S", "M", "T", "W", "T", "F", "S"].map((v, i) => (
-              <View key={i} style={{ flex: 1, alignItems: "center" }}>
-                <TextComponent style={{ fontSize: 15 }}>{v}</TextComponent>
+            }}>
+            {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((v, i) => (
+              <View key={i} style={{flex: 1, alignItems: 'center'}}>
+                <TextComponent style={{fontSize: 15}}>{v}</TextComponent>
               </View>
             ))}
           </View>
@@ -175,12 +173,12 @@ class IOSDate extends React.Component {
               activeDayColor: {},
               monthTitleTextStyle: {
                 color: Colors.themeBlack,
-                fontWeight: "300",
+                fontWeight: '300',
                 fontSize: 16,
               },
               emptyMonthContainerStyle: {},
               emptyMonthTextStyle: {
-                fontWeight: "200",
+                fontWeight: '200',
               },
               weekColumnsContainerStyle: {
                 // backgroundColor:'red'
@@ -189,7 +187,7 @@ class IOSDate extends React.Component {
                 paddingVertical: 10,
               },
               weekColumnTextStyle: {
-                color: "#b6c1cd",
+                color: '#b6c1cd',
                 fontSize: 13,
               },
               nonTouchableDayContainerStyle: {},
@@ -198,21 +196,21 @@ class IOSDate extends React.Component {
               endDateContainerStyle: {},
               dayContainerStyle: {},
               dayTextStyle: {
-                color: "#2d4150",
-                fontWeight: "200",
+                color: '#2d4150',
+                fontWeight: '200',
                 fontSize: 15,
               },
               dayOutOfRangeContainerStyle: {},
               dayOutOfRangeTextStyle: {},
               todayContainerStyle: {},
               todayTextStyle: {
-                color: "#6d95da",
+                color: '#6d95da',
               },
               activeDayContainerStyle: {
                 backgroundColor: Colors.themeBlack,
               },
               activeDayTextStyle: {
-                color: "white",
+                color: 'white',
               },
               nonTouchableLastMonthDayTextStyle: {},
             }}
