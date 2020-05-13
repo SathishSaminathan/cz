@@ -129,7 +129,7 @@ export default class RecommendationCard extends Component {
             <ButtonComponent
               style={{
                 backgroundColor: Colors.white,
-                fontSize: 18,
+                fontSize: 14,
                 color: Colors.themeBlack,
                 borderWidth: 1,
                 borderColor: Colors.themeBlack,
@@ -141,7 +141,7 @@ export default class RecommendationCard extends Component {
             <ButtonComponent
               style={{
                 backgroundColor: Colors.themeBlack,
-                fontSize: 18,
+                fontSize: 14,
                 color: Colors.white,
                 elevation: 1,
               }}>
