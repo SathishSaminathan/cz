@@ -19,7 +19,7 @@ import IconComponent from '../../components/Shared/IconComponent';
 import SwitchComponent from '../../components/Shared/SwitchComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
-import {widthPerc} from '../../helpers/styleHelper';
+import {widthPerc, StatusBarHeight} from '../../helpers/styleHelper';
 import Divider from '../../components/Shared/Divider';
 
 const data = [
@@ -99,7 +99,7 @@ const OrderYourFood = (props) => (
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => props.navigation.goBack()}
-        style={{position: 'absolute', left: 10, top: 20}}>
+        style={{position: 'absolute', left: 10, top: StatusBarHeight}}>
         <IconComponent
           type={IconType.AntDesign}
           name="left"
