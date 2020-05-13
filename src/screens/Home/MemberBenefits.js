@@ -14,6 +14,7 @@ import Silver from "../MemberBenefits/Silver";
 import Gold from "../MemberBenefits/Gold";
 import Diamond from "../MemberBenefits/Diamond";
 import IOSMemberBenifits from "./IOSMemberBenifits";
+import { StatusBarHeight } from "../../helpers/styleHelper";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -66,7 +67,7 @@ const MemberBenefits = (props) => {
     <View
       style={{
         flex: 1,
-        paddingTop: Platform.OS === "ios" ? 20 : 0,
+        // paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
         backgroundColor: Colors.white,
       }}
     >
