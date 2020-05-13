@@ -163,7 +163,7 @@ class Preferences extends Component {
                           //   height: 300,
                         }}
                         dropdownTextStyle={{
-                          fontFamily: "Proxima Nova Bold",
+                          fontFamily: "ProximaNova-Bold",
                           fontSize: 13,
                           textAlign: "center",
                           color: Colors.themeBlack,
@@ -237,7 +237,7 @@ class Preferences extends Component {
                           //   height: 300,
                         }}
                         dropdownTextStyle={{
-                          fontFamily: "Proxima Nova Bold",
+                          fontFamily: "ProximaNova-Bold",
                           fontSize: 13,
                           textAlign: "center",
                           color: Colors.themeBlack,
@@ -341,7 +341,7 @@ class Preferences extends Component {
                           //   height: 300,
                         }}
                         dropdownTextStyle={{
-                          fontFamily: "Proxima Nova Bold",
+                          fontFamily: "ProximaNova-Bold",
                           fontSize: 13,
                           textAlign: "center",
                           color: Colors.themeBlack,

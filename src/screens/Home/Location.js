@@ -159,7 +159,7 @@ class Location extends React.Component {
             <View style={{ alignItems: "center", flex: 8 }}>
               <TextComponent
                 style={{
-                  fontFamily: "Proxima Nova Bold",
+                  fontFamily: "ProximaNova-Bold",
                   fontSize: 15,
                   color: Colors.tabText,
                   // paddingVertical: 10,
@@ -184,7 +184,7 @@ class Location extends React.Component {
             <View style={{ alignItems: "center" }}>
               <TextComponent
                 style={{
-                  fontFamily: "Proxima Nova Bold",
+                  fontFamily: "ProximaNova-Bold",
                   fontSize: 15,
                   color: Colors.tabText,
                   // paddingVertical: 10,

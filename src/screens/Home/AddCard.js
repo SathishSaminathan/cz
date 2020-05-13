@@ -49,7 +49,7 @@ export default class AddCard extends Component {
                 height: 80,
               }}
               dropdownTextStyle={{
-                fontFamily: "Proxima Nova Bold",
+                fontFamily: "ProximaNova-Bold",
                 fontSize: 13,
               }}
               options={["Visa", "Master"]}
@@ -238,7 +238,7 @@ export default class AddCard extends Component {
                     height: 80,
                   }}
                   dropdownTextStyle={{
-                    fontFamily: "Proxima Nova Bold",
+                    fontFamily: "ProximaNova-Bold",
                     fontSize: 13,
                   }}
                   options={["Visa", "Master"]}

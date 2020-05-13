@@ -55,7 +55,7 @@ const LocationResults = (props) => {
           <View>
             <TextComponent
               style={{
-                fontFamily: "Proxima Nova Bold",
+                fontFamily: "ProximaNova-Bold",
                 fontSize: 15,
                 color: Colors.tabText,
                 paddingVertical: 10,
@@ -71,7 +71,7 @@ const LocationResults = (props) => {
           <View style={{ flex: 1 }}>
             <TextComponent
               style={{
-                fontFamily: "Proxima Nova Bold",
+                fontFamily: "ProximaNova-Bold",
                 fontSize: 15,
                 color: Colors.tabText,
                 paddingVertical: 0,
@@ -81,7 +81,7 @@ const LocationResults = (props) => {
             </TextComponent>
             <TextComponent
               style={{
-                fontFamily: "Proxima Nova Regular",
+                fontFamily: "ProximaNova-Regular",
                 fontSize: 13,
                 color: Colors.tabText,
                 paddingVertical: 5,

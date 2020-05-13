@@ -64,7 +64,7 @@ const Silver = ({ params }) => (
         style={{
           backgroundColor: Colors.themeBlack,
           color: Colors.white,
-          fontFamily: "Proxima Nova Bold",
+          fontFamily: "ProximaNova-Bold",
           height: 50,
         }}
         borderRadius={5}
