@@ -49,15 +49,14 @@ class IOSStays extends React.Component {
     }).start();
   };
 
-  renderScene = (Scene) => {
+  renderScene = (Scene, props) => {
     switch (Scene) {
       case 'Upcoming':
-        return <Upcoming {...this.props} />;
+        return <Upcoming {...props} />;
       case 'Past':
-        return <Past {...this.props} />;
+        return <Past {...props} />;
       case 'Cancelled':
-        return <Cancelled {...this.props} />;
-
+        return <Cancelled {...props} />;
       default:
         break;
     }
@@ -185,7 +184,7 @@ class IOSStays extends React.Component {
           </View>
         </View>
         <View style={{backgroundColor: Colors.staysBackground}}>
-          {this.renderScene(activeTab)}
+          {this.renderScene(activeTab, this.props)}
         </View>
       </View>
     );
