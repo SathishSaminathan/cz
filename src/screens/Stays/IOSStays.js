@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   View,
   StyleSheet,
@@ -6,19 +6,19 @@ import {
   Platform,
   TouchableOpacity,
   Animated,
-} from "react-native";
-import { Colors } from "../../constants/ThemeConstants";
-import TextComponent from "../../components/Shared/TextComponent";
-import Silver from "../MemberBenefits/Silver";
-import Gold from "../MemberBenefits/Gold";
-import Diamond from "../MemberBenefits/Diamond";
-import { IconType, FontType } from "../../constants/AppConstants";
-import Upcoming from "./Upcoming";
-import Past from "./Past";
-import Cancelled from "./Cancelled";
-import { StatusBarHeight } from "../../helpers/styleHelper";
+} from 'react-native';
+import {Colors} from '../../constants/ThemeConstants';
+import TextComponent from '../../components/Shared/TextComponent';
+import Silver from '../MemberBenefits/Silver';
+import Gold from '../MemberBenefits/Gold';
+import Diamond from '../MemberBenefits/Diamond';
+import {IconType, FontType} from '../../constants/AppConstants';
+import Upcoming from './Upcoming';
+import Past from './Past';
+import Cancelled from './Cancelled';
+import {StatusBarHeight} from '../../helpers/styleHelper';
 
-const initialLayout = { width: Dimensions.get("window").width };
+const initialLayout = {width: Dimensions.get('window').width};
 
 class IOSStays extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class IOSStays extends React.Component {
     this.state = {
       position: new Animated.Value(0),
       width: 0,
-      activeTab: "Upcoming",
+      activeTab: 'Upcoming',
     };
   }
 
@@ -51,11 +51,11 @@ class IOSStays extends React.Component {
 
   renderScene = (Scene) => {
     switch (Scene) {
-      case "Upcoming":
+      case 'Upcoming':
         return <Upcoming {...this.props} />;
-      case "Past":
+      case 'Past':
         return <Past {...this.props} />;
-      case "Cancelled":
+      case 'Cancelled':
         return <Cancelled {...this.props} />;
 
       default:
@@ -63,12 +63,12 @@ class IOSStays extends React.Component {
     }
   };
   render() {
-    const { position, width, activeTab, butWidth } = this.state;
+    const {position, width, activeTab, butWidth} = this.state;
 
     const trans = position.interpolate({
       inputRange: [0, width],
       outputRange: [0, width - width / 3],
-      extrapolate: "clamp",
+      extrapolate: 'clamp',
     });
 
     return (
@@ -76,66 +76,59 @@ class IOSStays extends React.Component {
         style={{
           flex: 1,
           backgroundColor: Colors.staysBackground,
-          paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
-        }}
-      >
+        }}>
         <View
           style={{
             backgroundColor: Colors.white,
+            paddingTop: Platform.OS === 'ios' ? StatusBarHeight : 0,
             shadowOpacity: 0.3,
             shadowRadius: 3,
             shadowOffset: {
               height: 0,
               width: 0,
             },
-          }}
-        >
+          }}>
           <View
             style={{
               height: 60,
               // elevation: 10,
               backgroundColor: Colors.white,
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "row",
-              justifyContent: "center",
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'row',
+              justifyContent: 'center',
               paddingHorizontal: 10,
-            }}
-          >
+            }}>
             <View
               style={{
                 flex: 9,
                 height: 40,
-                backgroundColor: "rgba(118,118,128,0.12)",
+                backgroundColor: 'rgba(118,118,128,0.12)',
                 //   width: widthPerc(90),
                 borderRadius: 8,
                 //   alignItems:'center'
-              }}
-            >
+              }}>
               <View
-                style={{ flex: 1, flexDirection: "row", alignSelf: "center" }}
-                onLayout={(event) => this.measureView(event)}
-              >
+                style={{flex: 1, flexDirection: 'row', alignSelf: 'center'}}
+                onLayout={(event) => this.measureView(event)}>
                 <TouchableOpacity
                   onLayout={(event) => this.measureButton(event)}
                   activeOpacity={1}
                   onPress={() => {
                     // this.scrollViewRef.scrollTo({ x: 0 });
                     this.handleTab(0);
-                    this.setState({ activeTab: "Upcoming" });
+                    this.setState({activeTab: 'Upcoming'});
                   }}
-                  style={styles.buttonStyle}
-                >
+                  style={styles.buttonStyle}>
                   <TextComponent
                     type={FontType.BOLD}
                     style={{
                       fontSize: 16,
                       color:
-                        activeTab === "Upcoming"
+                        activeTab === 'Upcoming'
                           ? Colors.white
                           : Colors.themeBlack,
-                    }}
-                  >
+                    }}>
                     Upcoming
                   </TextComponent>
                 </TouchableOpacity>
@@ -144,18 +137,16 @@ class IOSStays extends React.Component {
                   onPress={() => {
                     // this.scrollViewRef.scrollTo({ x: 0 });
                     this.handleTab(width / 2);
-                    this.setState({ activeTab: "Past" });
+                    this.setState({activeTab: 'Past'});
                   }}
-                  style={styles.buttonStyle}
-                >
+                  style={styles.buttonStyle}>
                   <TextComponent
                     type={FontType.BOLD}
                     style={{
                       fontSize: 16,
                       color:
-                        activeTab === "Past" ? Colors.white : Colors.themeBlack,
-                    }}
-                  >
+                        activeTab === 'Past' ? Colors.white : Colors.themeBlack,
+                    }}>
                     Past
                   </TextComponent>
                 </TouchableOpacity>
@@ -164,20 +155,18 @@ class IOSStays extends React.Component {
                   onPress={() => {
                     // this.scrollViewRef.scrollTo({ x: 360 });
                     this.handleTab(width);
-                    this.setState({ activeTab: "Cancelled" });
+                    this.setState({activeTab: 'Cancelled'});
                   }}
-                  style={styles.buttonStyle}
-                >
+                  style={styles.buttonStyle}>
                   <TextComponent
                     type={FontType.BOLD}
                     style={{
                       fontSize: 16,
                       color:
-                        activeTab === "Cancelled"
+                        activeTab === 'Cancelled'
                           ? Colors.white
                           : Colors.themeBlack,
-                    }}
-                  >
+                    }}>
                     Cancelled
                   </TextComponent>
                 </TouchableOpacity>
@@ -185,18 +174,17 @@ class IOSStays extends React.Component {
                   style={{
                     width: butWidth,
                     backgroundColor: Colors.themeBlack,
-                    height: "100%",
-                    position: "absolute",
+                    height: '100%',
+                    position: 'absolute',
                     borderRadius: 8,
                     left: trans,
                     zIndex: -1,
-                  }}
-                ></Animated.View>
+                  }}></Animated.View>
               </View>
             </View>
           </View>
         </View>
-        <View style={{ backgroundColor: Colors.staysBackground }}>
+        <View style={{backgroundColor: Colors.staysBackground}}>
           {this.renderScene(activeTab)}
         </View>
       </View>
@@ -213,8 +201,8 @@ const styles = StyleSheet.create({
     // width: "30%",
     flex: 1,
     // backgroundColor: Colors.themeBlack,
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
