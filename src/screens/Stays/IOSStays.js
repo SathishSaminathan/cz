@@ -76,11 +76,11 @@ class IOSStays extends React.Component {
         style={{
           flex: 1,
           backgroundColor: Colors.staysBackground,
+          paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
         }}
       >
         <View
           style={{
-            paddingTop: Platform.OS === "ios" ? StatusBarHeight : 0,
             backgroundColor: Colors.white,
             shadowOpacity: 0.3,
             shadowRadius: 3,
