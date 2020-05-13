@@ -52,7 +52,7 @@ const Stays = (props) => {
   return (
     <View style={{ flex: 1 }}>
       {Platform.OS === "ios" ? (
-        <IOSStays />
+        <IOSStays {...props}/>
       ) : (
         <TabView
           navigationState={{ index, routes }}
