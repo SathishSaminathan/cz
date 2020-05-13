@@ -9,7 +9,7 @@ import {Colors} from '../../constants/ThemeConstants';
 
 const LoginTextInput = ({password, placeholder, icon}) => {
   const [ShowPassword, setShowPassword] = useState(false);
-  const renderIcons = name => {
+  const renderIcons = (name) => {
     let temp = name;
     let Icon = null;
     if (['user'].includes(name)) {
@@ -43,7 +43,13 @@ const LoginTextInput = ({password, placeholder, icon}) => {
         borderRadius: 50,
         paddingHorizontal: 10,
       }}>
-      <View style={{flex: 8, paddingVertical: 0}}>
+      <View
+        style={{
+          flex: 8,
+          paddingVertical: 0,
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+        }}>
         <TextInput
           secureTextEntry={password && !ShowPassword}
           style={{color: Colors.textWhite, fontSize: 12}}
