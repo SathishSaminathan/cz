@@ -261,7 +261,7 @@ class ToiletriesRequest extends Component {
                     height: 110,
                   }}
                   dropdownTextStyle={{
-                    fontFamily: 'Proxima Nova Bold',
+                    fontFamily: 'ProximaNova-Bold',
                     fontSize: 13,
                     color: Colors.themeBlack,
                   }}
