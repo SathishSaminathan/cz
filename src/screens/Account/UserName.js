@@ -54,7 +54,7 @@ const Favorites = (props) => (
             />
           </View>
           <View style={{flex: 9}}>
-            <TextInput />
+            <TextInput style={{paddingVertical: '5%'}} />
           </View>
         </View>
         <TextComponent style={{color: Colors.warningRed}}>
@@ -97,7 +97,7 @@ const Favorites = (props) => (
             fontSize: 14,
             color: Colors.white,
             height: 34,
-            elevation: 5
+            elevation: 5,
           }}>
           Update
         </ButtonComponent>
