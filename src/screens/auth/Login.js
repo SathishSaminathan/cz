@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StatusBar} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import {LoginManager, LoginButton, AccessToken} from 'react-native-fbsdk';
 
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
 import {Colors} from '../../constants/ThemeConstants';
@@ -12,6 +14,34 @@ import IconComponent from '../../components/Shared/IconComponent';
 import {IconType} from '../../constants/AppConstants';
 
 export default class Signup extends Component {
+  handleLogin = async () => {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+
+    // Sign-in the user with the credential
+    auth()
+      .signInWithCredential(facebookCredential)
+      .then((res) => console.log());
+  };
   render() {
     return (
       <View style={{flex: 1}}>
@@ -74,7 +104,7 @@ export default class Signup extends Component {
                   alignSelf: 'center',
                 }}>
                 <ButtonComponent
-                  onPress={() => this.props.navigation.navigate('Home')}
+                  // onPress={() => this.props.navigation.navigate('Home')}
                   style={{backgroundColor: Colors.darkGrey, fontSize: 12}}
                   borderRadius={50}>
                   Log in
@@ -112,6 +142,7 @@ export default class Signup extends Component {
                 paddingBottom: 20,
               }}>
               <IconComponent
+                onPress={() => this.handleLogin()}
                 type={IconType.FontAwesome}
                 name="facebook"
                 style={{color: Colors.textBlack, fontSize: 25}}

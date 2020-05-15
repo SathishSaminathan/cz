@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "896334245688",
+    "firebase_url": "https://dreamshotel-7e72f.firebaseio.com",
+    "project_id": "dreamshotel-7e72f",
+    "storage_bucket": "dreamshotel-7e72f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896334245688:android:591782d8746d5b708adbcd",
+        "android_client_info": {
+          "package_name": "com.dreamhotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896334245688-9or19pd8c2ijvorfhku5rcbpbju6r06i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9xsxv2-v-WyfoeepHZJa0rG_ynfHPAWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896334245688-9or19pd8c2ijvorfhku5rcbpbju6r06i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

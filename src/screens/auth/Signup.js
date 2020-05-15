@@ -64,7 +64,7 @@ export default class Signup extends Component {
             <View
               style={{paddingVertical: 10, width: '50%', alignSelf: 'center'}}>
               <ButtonComponent
-                onPress={() => this.props.navigation.navigate('Home')}
+                // onPress={() => this.props.navigation.navigate('Home')}
                 style={{backgroundColor: Colors.darkGrey, fontSize: 12}}
                 borderRadius={50}>
                 Sign Up

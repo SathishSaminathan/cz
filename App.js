@@ -6,8 +6,9 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -15,15 +16,40 @@ import {MyStack} from './src/routes/StackNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {TabNavigator} from './src/routes/TabNavigator';
 
-const App = () => {
-  return (
-    <>
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
-    </>
-  );
-};
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+  }
+
+  componentDidMount() {
+    auth().onAuthStateChanged((res) => {
+      if (res) {
+        console.log('res._user', res._user && res._user);
+        this.setState({
+          user: res._user,
+        });
+      } else {
+        this.setState({
+          user: null,
+        });
+      }
+    });
+  }
+
+  render() {
+    const {user} = this.state;
+    return (
+      <>
+        <NavigationContainer>
+          {user ? <TabNavigator /> : <MyStack />}
+        </NavigationContainer>
+      </>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {

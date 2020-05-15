@@ -7,6 +7,9 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
+import {LoginManager, LoginButton, AccessToken} from 'react-native-fbsdk';
+import auth from '@react-native-firebase/auth';
+
 import VideoComponent from '../components/Shared/VideoComponent';
 import {Colors} from '../constants/ThemeConstants';
 import {widthPerc, heightPerc} from '../helpers/styleHelper';
@@ -17,7 +20,15 @@ import PoweredBY from '../components/Shared/PoweredBy';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 
+LoginManager.setLoginBehavior('NATIVE_ONLY');
+
 export default class GetStarted extends Component {
+  logout = () => {
+    LoginManager.logOut();
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
@@ -51,7 +62,7 @@ export default class GetStarted extends Component {
                   fontSize: 12,
                   borderColor: Colors.accordionBorderColor,
                   borderWidth: 1,
-                  color:Colors.accordionBorderColor
+                  color: Colors.accordionBorderColor,
                 }}
                 borderRadius={40}>
                 Get Started

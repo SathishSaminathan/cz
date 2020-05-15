@@ -1,17 +1,20 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Text,
   View,
   ScrollView,
   TouchableNativeFeedback,
   TouchableOpacity,
-} from "react-native";
-import TextComponent from "../../components/Shared/TextComponent";
-import { FontType, IconType } from "../../constants/AppConstants";
-import { Colors } from "../../constants/ThemeConstants";
-import IconComponent from "../../components/Shared/IconComponent";
-import ButtonComponent from "../../components/Shared/ButtonComponent";
-import PoweredBY from "../../components/Shared/PoweredBy";
+} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import {LoginManager} from 'react-native-fbsdk';
+
+import TextComponent from '../../components/Shared/TextComponent';
+import {FontType, IconType} from '../../constants/AppConstants';
+import {Colors} from '../../constants/ThemeConstants';
+import IconComponent from '../../components/Shared/IconComponent';
+import ButtonComponent from '../../components/Shared/ButtonComponent';
+import PoweredBY from '../../components/Shared/PoweredBy';
 
 export default class Account extends Component {
   constructor(props) {
@@ -19,61 +22,61 @@ export default class Account extends Component {
     this.state = {
       accountList: [
         {
-          name: "Alfred Information",
+          name: 'Alfred Information',
           lists: [
             {
-              name: "Points Activity",
-              route: "",
+              name: 'Points Activity',
+              route: '',
             },
             {
-              name: "Personal Information",
-              route: "PersonalInformation",
+              name: 'Personal Information',
+              route: 'PersonalInformation',
             },
             {
-              name: "Member Benefits",
-              route: "MemberBenefits",
+              name: 'Member Benefits',
+              route: 'MemberBenefits',
             },
             {
-              name: "Alfred Card",
-              route: "",
+              name: 'Alfred Card',
+              route: '',
             },
           ],
         },
         {
-          name: "Preferences",
+          name: 'Preferences',
           lists: [
             {
-              name: "Feedback",
-              route: "Feedback",
+              name: 'Feedback',
+              route: 'Feedback',
             },
             {
-              name: "Favourites",
-              route: "Favorites",
+              name: 'Favourites',
+              route: 'Favorites',
             },
             {
-              name: "Dream Hotel Benefits",
-              route: "",
+              name: 'Dream Hotel Benefits',
+              route: '',
             },
             {
-              name: "Room Preferences",
-              route: "Preferences",
+              name: 'Room Preferences',
+              route: 'Preferences',
             },
             {
-              name: "Security",
-              route: "Security",
+              name: 'Security',
+              route: 'Security',
             },
           ],
         },
         {
-          name: "About",
+          name: 'About',
           lists: [
             {
-              name: "Legal",
-              route: "",
+              name: 'Legal',
+              route: '',
             },
             {
-              name: "Version",
-              route: "",
+              name: 'Version',
+              route: '',
             },
           ],
         },
@@ -81,14 +84,20 @@ export default class Account extends Component {
     };
   }
 
+  logout = () => {
+    LoginManager.logOut();
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
+
   renderList = () => {
-    const { accountList } = this.state;
+    const {accountList} = this.state;
     return accountList.map((list, i) => (
-      <View style={{ paddingBottom: 10 }} key={i}>
+      <View style={{paddingBottom: 10}} key={i}>
         <TextComponent
-          style={{ fontSize: 15, paddingBottom: 10 }}
-          type={FontType.BOLD}
-        >
+          style={{fontSize: 15, paddingBottom: 10}}
+          type={FontType.BOLD}>
           {list.name}
         </TextComponent>
         <View
@@ -97,8 +106,7 @@ export default class Account extends Component {
             borderColor: Colors.accordionBorderColor,
             borderRadius: 5,
             paddingBottom: 10,
-          }}
-        >
+          }}>
           {list.lists.map((list, i) => (
             // <TouchableNativeFeedback
             //   key={i}
@@ -111,37 +119,34 @@ export default class Account extends Component {
               onPress={() =>
                 list.route && this.props.navigation.navigate(list.route)
               }
-              style={{ flex: 1 }}
-              key={i}
-            >
+              style={{flex: 1}}
+              key={i}>
               <View
                 style={{
                   paddingHorizontal: 15,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
                   // paddingHorizontal: 15,
                   paddingVertical: 15,
                   //   backgroundColor: 'green',
                   flex: 1,
-                }}
-              >
-                <TextComponent style={{ fontSize: 13 }}>
+                }}>
+                <TextComponent style={{fontSize: 13}}>
                   {list.name}
                 </TextComponent>
                 <IconComponent type={IconType.AntDesign} name="right" />
               </View>
               <View
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   height: 1,
                   backgroundColor: Colors.accordionBorderColor,
-                  alignSelf: "center",
-                  width: "96%",
-                  left: "2%",
+                  alignSelf: 'center',
+                  width: '96%',
+                  left: '2%',
                   bottom: 0,
-                }}
-              ></View>
+                }}></View>
             </TouchableOpacity>
             // </TouchableNativeFeedback>
           ))}
@@ -157,25 +162,23 @@ export default class Account extends Component {
           paddingTop: 10,
           backgroundColor: Colors.white,
           paddingBottom: 60,
-        }}
-      >
+        }}>
         {this.renderList()}
         <ButtonComponent
-          onPress={() => this.props.navigation.navigate("GetStarted")}
+          onPress={() => this.logout()}
           borderRadius={50}
           style={{
             backgroundColor: Colors.themeBlack,
-            width: "30%",
+            width: '30%',
             fontSize: 13,
             // height: 40,
             color: Colors.white,
             elevation: 0,
-            alignSelf: "center",
-          }}
-        >
+            alignSelf: 'center',
+          }}>
           Log Out
         </ButtonComponent>
-        <View style={{ paddingBottom: 15 }}>
+        <View style={{paddingBottom: 15}}>
           <PoweredBY />
         </View>
       </ScrollView>

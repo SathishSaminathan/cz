@@ -74,14 +74,14 @@ function MyStack() {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home"
         component={TabNavigator}
         options={{
           // title: 'Notifications',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }
