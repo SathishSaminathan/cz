@@ -5,9 +5,12 @@ import {
   ScrollView,
   TouchableNativeFeedback,
   TouchableOpacity,
+  NativeModules,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {LoginManager} from 'react-native-fbsdk';
+
+const {RNTwitterSignIn} = NativeModules;
 
 import TextComponent from '../../components/Shared/TextComponent';
 import {FontType, IconType} from '../../constants/AppConstants';
@@ -86,6 +89,7 @@ export default class Account extends Component {
 
   logout = () => {
     LoginManager.logOut();
+    RNTwitterSignIn.logOut();
     auth()
       .signOut()
       .then(() => console.log('User signed out!'));

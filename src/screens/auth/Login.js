@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Image, StatusBar} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {LoginManager, LoginButton, AccessToken} from 'react-native-fbsdk';
+import {authorize} from 'react-native-app-auth';
 
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
 import {Colors} from '../../constants/ThemeConstants';
@@ -12,8 +13,26 @@ import TextComponent from '../../components/Shared/TextComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import IconComponent from '../../components/Shared/IconComponent';
 import {IconType} from '../../constants/AppConstants';
+import TwitterButton from '../../components/Shared/TwitterButton';
+
+const config = {
+  clientId: 'hmnm9en6ml3u8vgt4os099iqq',
+  redirectUrl: 'com.myclientapp://myclient/redirect',
+  serviceConfiguration: {
+    authorizationEndpoint:
+      'https://dreamshoteldomain.auth.us-east-1.amazoncognito.com/oauth2/authorize',
+    tokenEndpoint:
+      'https://dreamshoteldomain.auth.us-east-1.amazoncognito.com/oauth2/token',
+    revocationEndpoint:
+      'https://dreamshoteldomain.auth.us-east-1.amazoncognito.com/oauth2/revoke',
+  },
+};
 
 export default class Signup extends Component {
+  handleAmazon = () => {
+    let temp = authorize(config);
+    console.log(temp);
+  };
   handleLogin = async () => {
     // Attempt login with permissions
     const result = await LoginManager.logInWithPermissions([
@@ -148,15 +167,17 @@ export default class Signup extends Component {
                 style={{color: Colors.textBlack, fontSize: 25}}
               />
               <IconComponent
+                onPress={() => this.handleAmazon()}
                 type={IconType.FontAwesome}
                 name="amazon"
                 style={{color: Colors.textBlack, fontSize: 25}}
               />
-              <IconComponent
+              <TwitterButton />
+              {/* <IconComponent
                 type={IconType.FontAwesome}
                 name="twitter"
                 style={{color: Colors.textBlack, fontSize: 25}}
-              />
+              /> */}
             </View>
             <PoweredBY />
           </View>

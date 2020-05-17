@@ -134,6 +134,9 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true // used to fix the The number of method references in a .dex file cannot exceed 64K. error
+        manifestPlaceholders = [
+            appAuthRedirectScheme: 'io.identityserver.demo'
+        ]
     }
     splits {
         abi {
