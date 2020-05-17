@@ -46,9 +46,9 @@ export default class TwitterButton extends Component {
           // Sign-in the user with the credential
           auth().signInWithCredential(twitterCredential);
 
-          this.setState({
-            isLoggedIn: true,
-          });
+        //   this.setState({
+        //     isLoggedIn: true,
+        //   });
         }
       })
       .catch((error) => {
