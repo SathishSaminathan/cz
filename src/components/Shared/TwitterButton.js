@@ -10,9 +10,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import {connect} from 'react-redux';
+
 import IconComponent from './IconComponent';
-import {IconType} from '../../constants/AppConstants';
+import {IconType, AppVariables} from '../../constants/AppConstants';
 import {Colors} from '../../constants/ThemeConstants';
+import {setUser, toggleLoading} from '../../store/actions';
+import {storeData} from '../../helpers/utils';
 
 const {RNTwitterSignIn} = NativeModules;
 
@@ -22,12 +26,14 @@ const Constants = {
   TWITTER_CONSUMER_SECRET: 'mGDihjFa901AjtF4Rin21z1m8oK5oqyOfXKXYzlhIyWvOvc7ch',
 };
 
-export default class TwitterButton extends Component {
+class TwitterButton extends Component {
   state = {
     isLoggedIn: false,
   };
 
   _twitterSignIn = () => {
+    const {toggleLoading} = this.props;
+    toggleLoading(true);
     RNTwitterSignIn.init(
       Constants.TWITTER_COMSUMER_KEY,
       Constants.TWITTER_CONSUMER_SECRET,
@@ -44,11 +50,14 @@ export default class TwitterButton extends Component {
           );
 
           // Sign-in the user with the credential
-          auth().signInWithCredential(twitterCredential);
-
-        //   this.setState({
-        //     isLoggedIn: true,
-        //   });
+          auth()
+            .signInWithCredential(twitterCredential)
+            .then((res) => {
+              // console.log('resss...', res.additionalUserInfo);
+              this.props.setUser(res.additionalUserInfo);
+              storeData(AppVariables.USER, res.additionalUserInfo);
+              toggleLoading(false);
+            });
         }
       })
       .catch((error) => {
@@ -92,3 +101,11 @@ const styles = StyleSheet.create({
     height: 50,
   },
 });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (value) => dispatch(setUser(value)),
+    toggleLoading: (value) => dispatch(toggleLoading(value)),
+  };
+};
+export default connect(null, mapDispatchToProps)(TwitterButton);

@@ -7,44 +7,74 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import auth from '@react-native-firebase/auth';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import AsyncStorage from '@react-native-community/async-storage';
+import {connect} from 'react-redux';
 
 import {MyStack} from './src/routes/StackNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {TabNavigator} from './src/routes/TabNavigator';
+import Loader from './src/components/Shared/Loader';
+import {Colors} from './src/constants/ThemeConstants';
+import {getData} from './src/helpers/utils';
+import {AppVariables} from './src/constants/AppConstants';
+import {setUser, toggleLoading} from './src/store/actions';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
+      IsLoading: true,
+      checkedForUser: false,
     };
   }
 
   componentDidMount() {
-    auth().onAuthStateChanged((res) => {
-      if (res) {
-        console.log('res._user', res._user && res._user);
-        this.setState({
-          user: res._user,
-        });
-      } else {
-        this.setState({
-          user: null,
-        });
-      }
-    });
+    // auth().onAuthStateChanged((res) => {
+    //   if (res) {
+    //     console.log('res._user', res._user && res._user);
+    //     this.setState({
+    //       user: res._user,
+    //     });
+    //   } else {
+    //     this.setState({
+    //       user: null,
+    //     });
+    //   }
+    // });
+    this.checkForUser();
+    setTimeout(() => {
+      this.setState({
+        IsLoading: false,
+      });
+      this.props.toggleLoading(false);
+    }, 1500);
   }
 
+  checkForUser = async () => {
+    const {setUser} = this.props;
+    const user = await getData(AppVariables.USER);
+    if (user) {
+      setUser(user);
+    }
+  };
+
   render() {
-    const {user} = this.state;
+    const {user, IsLoading} = this.state;
+    const {current_user, isLoading} = this.props;
     return (
       <>
+        <StatusBar backgroundColor={Colors.nativeBlack} />
         <NavigationContainer>
-          {user ? <TabNavigator /> : <MyStack />}
+          {isLoading ? (
+            <Loader />
+          ) : current_user ? (
+            <TabNavigator {...this.props} />
+          ) : (
+            <MyStack />
+          )}
         </NavigationContainer>
       </>
     );
@@ -90,4 +120,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+const mapStateToProps = ({user: {current_user, isLoading}}) => {
+  return {
+    current_user,
+    isLoading,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (value) => dispatch(setUser(value)),
+    toggleLoading: (value) => dispatch(toggleLoading(value)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

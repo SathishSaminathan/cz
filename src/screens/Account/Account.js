@@ -9,17 +9,20 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {LoginManager} from 'react-native-fbsdk';
+import {connect} from 'react-redux';
 
 const {RNTwitterSignIn} = NativeModules;
 
 import TextComponent from '../../components/Shared/TextComponent';
-import {FontType, IconType} from '../../constants/AppConstants';
+import {FontType, IconType, AppVariables} from '../../constants/AppConstants';
 import {Colors} from '../../constants/ThemeConstants';
 import IconComponent from '../../components/Shared/IconComponent';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
+import {removeData} from '../../helpers/utils';
+import {removeUser} from '../../store/actions';
 
-export default class Account extends Component {
+class Account extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,11 +91,19 @@ export default class Account extends Component {
   }
 
   logout = () => {
-    LoginManager.logOut();
-    RNTwitterSignIn.logOut();
+    const {current_user, removeUser} = this.props;
+    switch (current_user.providerId) {
+      case 'facebook.com':
+        LoginManager.logOut();
+        break;
+      default:
+        RNTwitterSignIn.logOut();
+    }
     auth()
       .signOut()
       .then(() => console.log('User signed out!'));
+    removeData(AppVariables.USER);
+    removeUser();
   };
 
   renderList = () => {
@@ -189,3 +200,15 @@ export default class Account extends Component {
     );
   }
 }
+
+const mapStateToProps = ({user: {current_user}}) => {
+  return {
+    current_user,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeUser: (value) => dispatch(removeUser(value)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

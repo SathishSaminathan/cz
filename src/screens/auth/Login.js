@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StatusBar} from 'react-native';
-import auth from '@react-native-firebase/auth';
-import {LoginManager, LoginButton, AccessToken} from 'react-native-fbsdk';
 import {authorize} from 'react-native-app-auth';
 
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
@@ -14,6 +12,7 @@ import PoweredBY from '../../components/Shared/PoweredBy';
 import IconComponent from '../../components/Shared/IconComponent';
 import {IconType} from '../../constants/AppConstants';
 import TwitterButton from '../../components/Shared/TwitterButton';
+import FacebookButton from '../../components/Shared/FacebookButton';
 
 const config = {
   clientId: 'hmnm9en6ml3u8vgt4os099iqq',
@@ -33,34 +32,7 @@ export default class Signup extends Component {
     let temp = authorize(config);
     console.log(temp);
   };
-  handleLogin = async () => {
-    // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions([
-      'public_profile',
-      'email',
-    ]);
 
-    if (result.isCancelled) {
-      throw 'User cancelled the login process';
-    }
-
-    // Once signed in, get the users AccesToken
-    const data = await AccessToken.getCurrentAccessToken();
-
-    if (!data) {
-      throw 'Something went wrong obtaining access token';
-    }
-
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = auth.FacebookAuthProvider.credential(
-      data.accessToken,
-    );
-
-    // Sign-in the user with the credential
-    auth()
-      .signInWithCredential(facebookCredential)
-      .then((res) => console.log());
-  };
   render() {
     return (
       <View style={{flex: 1}}>
@@ -160,12 +132,7 @@ export default class Signup extends Component {
                 paddingVertical: 10,
                 paddingBottom: 20,
               }}>
-              <IconComponent
-                onPress={() => this.handleLogin()}
-                type={IconType.FontAwesome}
-                name="facebook"
-                style={{color: Colors.textBlack, fontSize: 25}}
-              />
+              <FacebookButton />
               <IconComponent
                 onPress={() => this.handleAmazon()}
                 type={IconType.FontAwesome}

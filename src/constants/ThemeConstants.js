@@ -6,6 +6,7 @@ export const Colors = {
   secondaryColor: '#ffe500',
   themeBlack: '#191919',
   white: '#ffffff',
+  nativeBlack: '#000',
   black: '#484848',
   textBlack: '#5D5B5B',
   textWhite: '#A9A9A9',
@@ -38,5 +39,5 @@ export const Colors = {
   active: '#4cb5ff',
   serious: '#9059ff',
   critical: '#178AFF',
-  cancelblue:"#0180E3"
+  cancelblue: '#0180E3',
 };

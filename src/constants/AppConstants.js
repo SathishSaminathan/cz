@@ -29,3 +29,7 @@ export const IconType = {
   Entypo: Entypo,
   EvilIcons: EvilIcons,
 };
+
+export const AppVariables = {
+  USER: 'user',
+};
