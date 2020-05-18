@@ -138,7 +138,7 @@ export default class Signup extends Component {
                 }}>
                 <ButtonComponent
                   // onPress={() => this.props.navigation.navigate('Home')}
-                  onPress={() => this.openLink()}
+                  // onPress={() => this.openLink()}
                   style={{backgroundColor: Colors.darkGrey, fontSize: 12}}
                   borderRadius={50}>
                   Log in
