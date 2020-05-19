@@ -11,6 +11,7 @@ import {StyleSheet, StatusBar} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 import {connect} from 'react-redux';
+import AnimatedHideView from 'react-native-animated-hide-view';
 
 import {MyStack} from './src/routes/StackNavigator';
 import {NavigationContainer} from '@react-navigation/native';
@@ -66,16 +67,15 @@ class App extends Component {
     const {current_user, isLoading} = this.props;
     return (
       <>
-        <StatusBar backgroundColor={Colors.nativeBlack} />
-        <NavigationContainer>
-          {isLoading ? (
-            <Loader />
-          ) : current_user ? (
-            <TabNavigator {...this.props} />
-          ) : (
-            <MyStack />
-          )}
-        </NavigationContainer>
+        <StatusBar backgroundColor={Colors.white} />
+        <AnimatedHideView visible={isLoading} style={{flex: 1}} unmountOnHide>
+          <Loader />
+        </AnimatedHideView>
+        {!isLoading && (
+          <NavigationContainer>
+            {current_user ? <TabNavigator {...this.props} /> : <MyStack />}
+          </NavigationContainer>
+        )}
       </>
     );
   }

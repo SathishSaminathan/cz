@@ -8,11 +8,11 @@ const Loader = ({params}) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: Colors.nativeBlack,
+        backgroundColor: Colors.white,
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Spinner type="9CubeGrid" color={Colors.white} />
+      <Spinner type="9CubeGrid" color={Colors.black} />
     </View>
   );
 };
