@@ -21,6 +21,7 @@ import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import {removeData} from '../../helpers/utils';
 import {removeUser} from '../../store/actions';
+import {getVersion} from 'react-native-device-info';
 
 class Account extends Component {
   constructor(props) {
@@ -148,7 +149,7 @@ class Account extends Component {
                   flex: 1,
                 }}>
                 <TextComponent style={{fontSize: 13}}>
-                  {list.name}
+                  {`${list.name} ${list.name === 'Version' && getVersion()}`}
                 </TextComponent>
                 <IconComponent type={IconType.AntDesign} name="right" />
               </View>

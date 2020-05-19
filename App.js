@@ -8,8 +8,6 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, StatusBar} from 'react-native';
-import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-community/async-storage';
 import {connect} from 'react-redux';
 import AnimatedHideView from 'react-native-animated-hide-view';
 
@@ -21,6 +19,7 @@ import {Colors} from './src/constants/ThemeConstants';
 import {getData} from './src/helpers/utils';
 import {AppVariables} from './src/constants/AppConstants';
 import {setUser, toggleLoading} from './src/store/actions';
+import TextComponent from './src/components/Shared/TextComponent';
 
 class App extends Component {
   constructor(props) {
