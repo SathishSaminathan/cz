@@ -9,36 +9,11 @@ import {Images} from '../../assets/images';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import LinearGradient from 'react-native-linear-gradient';
-import { connect } from 'react-redux';
-import { toggleLoading, setUser } from '../../store/actions';
-
-const AppAuthConfig = {
-  issuer:
-    'https://fidelisalfreddev.b2clogin.com/0a140015-d6fc-42a2-9403-ad3a5ab05719/v2.0/',
-  clientId: '5574cce2-7b33-4986-905c-0d49ade2c40d',
-  // clientSecret: 'ga0RGNYHvNM5d0SLGQfpQWAPGJ8',
-  // redirectUrl: 'urn.ietf.wg.oauth.2.0.oob://oauthredirect',
-
-  // redirectUrl: 'msauth://com.fidelisalfred2c.app/ga0RGNYHvNM5d0SLGQfpQWAPGJ8%3D',
-  // redirectUrl: 'urn:ietf:wg:oauth:2.0:oob',
-
-  redirectUrl: 'vinu://oauth',
-  // redirectUrl: "https://fidelisalfreddev.b2clogin.com/oauth2/nativeclient",
-  // redirectUrl: 'urn:ietf:wg:oauth:2.0:oob',
-  additionalParameters: {prompt: 'login'},
-  scopes: ['openid'],
-
-  serviceConfiguration: {
-    authorizationEndpoint:
-      'https://fidelisalfreddev.b2clogin.com/fidelisalfreddev.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_b2c_twitter_signin',
-    // authorizationEndpoint1:
-    //   "https://fidelisalfreddev.b2clogin.com/fidelisalfreddev.onmicrosoft.com/oauth2/v2.0/authorize?p=b2c_1_b2c_twitter_signin",
-    tokenEndpoint:
-      'https://fidelisalfreddev.b2clogin.com/fidelisalfreddev.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_b2c_twitter_signin',
-    revocationEndpoint:
-      'https://fidelisalfreddev.b2clogin.com/fidelisalfreddev.onmicrosoft.com/oauth2/v2.0/logout?p=b2c_1_b2c_twitter_signin',
-  },
-};
+import {connect} from 'react-redux';
+import {toggleLoading, setUser} from '../../store/actions';
+import { AppAuthConfig } from '../../config/B2C';
+import { storeData } from '../../helpers/utils';
+import { AppVariables } from '../../constants/AppConstants';
 
 class B2CLogin extends Component {
   constructor(props) {
@@ -51,15 +26,22 @@ class B2CLogin extends Component {
   }
 
   oauth = async () => {
-    // const {toggleLoading} = this.props;
-    // // Attempt login with permissions
+    const {toggleLoading, setUser} = this.props;
     // toggleLoading(true);
     try {
       const authState = await authorize(AppAuthConfig);
       console.log('authorize....', authState);
-      this.setState({
-        accessToken: authState.idToken,
-      });
+      this.setState(
+        {
+          accessToken: authState.idToken,
+        },
+        () => {
+          toggleLoading(false);
+          setUser(authState);
+          storeData(AppVariables.USER, authState);
+          toggleLoading(false);
+        },
+      );
       // toggleLoading(false);
       // debugger;
       // this.animateState(
@@ -235,4 +217,3 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(null, mapDispatchToProps)(B2CLogin);
-
