@@ -56,7 +56,7 @@ export default class GetStarted extends Component {
           <View style={{flex: 3}}>
             <View style={{width: '100%'}}>
               <ButtonComponent
-                onPress={() => this.props.navigation.navigate('Login')}
+                onPress={() => this.props.navigation.navigate('B2CLogin')}
                 style={{
                   backgroundColor: Colors.darkGrey,
                   fontSize: 12,
