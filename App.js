@@ -29,7 +29,7 @@ class App extends Component {
       user: null,
       IsLoading: true,
       checkedForUser: false,
-      fingerprintSuccess: false,
+      fingerprintSuccess: true,
     };
   }
 

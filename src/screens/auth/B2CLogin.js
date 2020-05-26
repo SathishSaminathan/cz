@@ -9,6 +9,8 @@ import {Images} from '../../assets/images';
 import ButtonComponent from '../../components/Shared/ButtonComponent';
 import PoweredBY from '../../components/Shared/PoweredBy';
 import LinearGradient from 'react-native-linear-gradient';
+import { connect } from 'react-redux';
+import { toggleLoading, setUser } from '../../store/actions';
 
 const AppAuthConfig = {
   issuer:
@@ -49,12 +51,16 @@ class B2CLogin extends Component {
   }
 
   oauth = async () => {
+    // const {toggleLoading} = this.props;
+    // // Attempt login with permissions
+    // toggleLoading(true);
     try {
       const authState = await authorize(AppAuthConfig);
       console.log('authorize....', authState);
       this.setState({
         accessToken: authState.idToken,
       });
+      // toggleLoading(false);
       // debugger;
       // this.animateState(
       //   {
@@ -66,6 +72,7 @@ class B2CLogin extends Component {
       //   500
       // );
     } catch (error) {
+      toggleLoading(false);
       // debugger
       //   Alert.alert('Failed to log in', error.message);
       this.setState({
@@ -221,4 +228,11 @@ class B2CLogin extends Component {
   }
 }
 
-export default B2CLogin;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (value) => dispatch(setUser(value)),
+    toggleLoading: (value) => dispatch(toggleLoading(value)),
+  };
+};
+export default connect(null, mapDispatchToProps)(B2CLogin);
+
