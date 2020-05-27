@@ -28,11 +28,11 @@ class Home extends Component {
   }
   render() {
     const routeName = Platform.OS === 'ios' ? 'IOSLocation' : 'Location';
-    // const {
-    //   current_user: {
-    //     profile: {name},
-    //   },
-    // } = this.props;
+    const {
+      current_user: {
+        name,
+      },
+    } = this.props;
     return (
       <View style={styles.container}>
         <View
@@ -96,7 +96,7 @@ class Home extends Component {
                   numberOfLines={1}
                   style={{fontSize: 16, color: Colors.white}}
                   type={FontType.BOLD}>
-                  Hi, {"John"}
+                  Hi, {name}
                 </TextComponent>
                 <TextComponent style={{fontSize: 10, color: Colors.white}}>
                   Alfred Loyalty Points 1500

@@ -109,7 +109,7 @@ class Account extends Component {
     // removeUser();
     try {
       await revoke(AppAuthConfig, {
-        tokenToRevoke: current_user.idToken,
+        tokenToRevoke: current_user.accessToken,
         sendClientId: true,
       });
       this.setState(

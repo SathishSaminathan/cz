@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Image, StatusBar, Alert} from 'react-native';
 import {authorize, refresh, revoke} from 'react-native-app-auth';
 import {Toast} from 'react-native-ui-lib';
+import decodeJWT from 'jwt-decode';
 
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
 import {Colors} from '../../constants/ThemeConstants';
@@ -11,9 +12,9 @@ import PoweredBY from '../../components/Shared/PoweredBy';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
 import {toggleLoading, setUser} from '../../store/actions';
-import { AppAuthConfig } from '../../config/B2C';
-import { storeData } from '../../helpers/utils';
-import { AppVariables } from '../../constants/AppConstants';
+import {AppAuthConfig} from '../../config/B2C';
+import {storeData} from '../../helpers/utils';
+import {AppVariables} from '../../constants/AppConstants';
 
 class B2CLogin extends Component {
   constructor(props) {
@@ -30,20 +31,25 @@ class B2CLogin extends Component {
     // toggleLoading(true);
     try {
       const authState = await authorize(AppAuthConfig);
-      console.log('authorize....', authState);
+      // console.log('authorize....', authState);
       this.setState(
         {
           accessToken: authState.idToken,
         },
         () => {
-          toggleLoading(false);
-          setUser(authState);
-          storeData(AppVariables.USER, authState);
+          const decoded = decodeJWT(authState.idToken);
+          // console.log('decoded acc....', {...decoded, accessToken: authState.idToken});
+          // toggleLoading(false);
+          setUser({...decoded, accessToken: authState.idToken});
+          storeData(AppVariables.USER, {
+            ...decoded,
+            accessToken: authState.idToken,
+          });
           toggleLoading(false);
         },
       );
       // toggleLoading(false);
-      // debugger;
+
       // this.animateState(
       //   {
       //     hasLoggedInOnce: true,
