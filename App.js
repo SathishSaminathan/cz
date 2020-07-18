@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar, BackHandler} from 'react-native';
 import {connect} from 'react-redux';
 import AnimatedHideView from 'react-native-animated-hide-view';
 
@@ -20,6 +20,7 @@ import {getData} from './src/helpers/utils';
 import {AppVariables} from './src/constants/AppConstants';
 import {setUser, toggleLoading} from './src/store/actions';
 import TextComponent from './src/components/Shared/TextComponent';
+import Application from './src/securityComponents/Application.container';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends Component {
       user: null,
       IsLoading: true,
       checkedForUser: false,
+      fingerprintSuccess: true,
     };
   }
 
@@ -46,9 +48,9 @@ class App extends Component {
     // });
     this.checkForUser();
     setTimeout(() => {
-      this.setState({
-        IsLoading: false,
-      });
+      // this.setState({
+      //   IsLoading: false,
+      // });
       this.props.toggleLoading(false);
     }, 1500);
   }
@@ -61,20 +63,44 @@ class App extends Component {
     }
   };
 
+  onAuthenticate = (fingerprintSuccess) => {
+    this.setState(
+      {
+        fingerprintSuccess,
+      },
+      () => !this.state.fingerprintSuccess && BackHandler.exitApp(),
+    );
+  };
+
   render() {
-    const {user, IsLoading} = this.state;
+    const {user, IsLoading, fingerprintSuccess} = this.state;
     const {current_user, isLoading} = this.props;
     return (
       <>
-        <StatusBar backgroundColor={Colors.white} />
-        <AnimatedHideView visible={isLoading} style={{flex: 1}} unmountOnHide>
+        {/* <AnimatedHideView visible={isLoading} style={{flex: 1}} unmountOnHide>
           <Loader />
-        </AnimatedHideView>
-        {!isLoading && (
+        </AnimatedHideView> */}
+        {isLoading && <Loader />}
+        <StatusBar
+          backgroundColor={
+            fingerprintSuccess ? Colors.white : Colors.themeBlack
+          }
+        />
+        {!fingerprintSuccess && !isLoading ? (
+          <Application onAuthenticate={this.onAuthenticate} />
+        ) : (
+          !isLoading && (
+            <NavigationContainer>
+              {current_user ? <TabNavigator {...this.props} /> : <MyStack />}
+            </NavigationContainer>
+          )
+        )}
+
+        {/* {!isLoading && (
           <NavigationContainer>
             {current_user ? <TabNavigator {...this.props} /> : <MyStack />}
           </NavigationContainer>
-        )}
+        )} */}
       </>
     );
   }

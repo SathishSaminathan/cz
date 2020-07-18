@@ -8,6 +8,7 @@ import {
   NativeModules,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import {revoke} from 'react-native-app-auth';
 import {LoginManager} from 'react-native-fbsdk';
 import {connect} from 'react-redux';
 
@@ -22,6 +23,7 @@ import PoweredBY from '../../components/Shared/PoweredBy';
 import {removeData} from '../../helpers/utils';
 import {removeUser} from '../../store/actions';
 import {getVersion} from 'react-native-device-info';
+import {AppAuthConfig} from '../../config/B2C';
 
 class Account extends Component {
   constructor(props) {
@@ -91,20 +93,42 @@ class Account extends Component {
     };
   }
 
-  logout = () => {
+  logout = async () => {
     const {current_user, removeUser} = this.props;
-    switch (current_user.providerId) {
-      case 'facebook.com':
-        LoginManager.logOut();
-        break;
-      default:
-        RNTwitterSignIn.logOut();
+    // switch (current_user.providerId) {
+    //   case 'facebook.com':
+    //     LoginManager.logOut();
+    //     break;
+    //   default:
+    //     RNTwitterSignIn.logOut();
+    // }
+    // auth()
+    //   .signOut()
+    //   .then(() => console.log('User signed out!'));
+    // removeData(AppVariables.USER);
+    // removeUser();
+    try {
+      await revoke(AppAuthConfig, {
+        tokenToRevoke: current_user.accessToken,
+        sendClientId: true,
+      });
+      this.setState(
+        {
+          accessToken: null,
+        },
+        () => {
+          removeData(AppVariables.USER);
+          removeUser();
+        },
+      );
+      // this.animateState({
+      //   accessToken: "",
+      //   accessTokenExpirationDate: "",
+      //   refreshToken: "",
+      // });
+    } catch (error) {
+      Alert.alert('Failed to revoke token', error.message);
     }
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-    removeData(AppVariables.USER);
-    removeUser();
   };
 
   renderList = () => {
@@ -181,7 +205,7 @@ class Account extends Component {
         }}>
         {this.renderList()}
         <ButtonComponent
-          onPress={() => this.logout()}
+          onPress={this.logout}
           borderRadius={50}
           style={{
             backgroundColor: Colors.themeBlack,
@@ -209,7 +233,7 @@ const mapStateToProps = ({user: {current_user}}) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeUser: (value) => dispatch(removeUser(value)),
+    removeUser: () => dispatch(removeUser()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

@@ -43,6 +43,7 @@ import UserName from '../screens/Account/UserName';
 import IOSDate from '../screens/Home/IOSDate';
 import IOSLocation from '../screens/Home/IOSLocation';
 import IOSRoomFilter from '../screens/Home/IOSRoomFilter';
+import B2CLogin from '../screens/auth/B2CLogin';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,14 @@ function MyStack() {
         // }}
       />
       <Stack.Screen
+        name="B2CLogin"
+        component={B2CLogin}
+        options={{
+          // title: 'Notifications',
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
+      {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{
@@ -73,7 +82,7 @@ function MyStack() {
           // title: 'Notifications',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
-      />
+      /> */}
       {/* <Stack.Screen
         name="Home"
         component={TabNavigator}

@@ -30,7 +30,7 @@ class Home extends Component {
     const routeName = Platform.OS === 'ios' ? 'IOSLocation' : 'Location';
     const {
       current_user: {
-        profile: {name},
+        name,
       },
     } = this.props;
     return (

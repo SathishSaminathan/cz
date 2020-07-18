@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Text, View, Image, StatusBar, Alert, Linking} from 'react-native';
 import {authorize} from 'react-native-app-auth';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
-import {default as Amplify} from 'aws-amplify';
-import {withOAuth} from 'aws-amplify-react-native';
 
 import {heightPerc, widthPerc} from '../../helpers/styleHelper';
 import {Colors} from '../../constants/ThemeConstants';
@@ -33,26 +31,6 @@ const oauth = {
   redirectSignOut: 'app://',
   responseType: 'code', // or 'token', note that REFRESH token will only be generated when the responseType is code
 };
-
-Amplify.configure(awsConfig);
-Amplify.configure({
-  Auth: {
-    oauth: {
-      domain:
-        'dreamhotelf4dd6de0-f4dd6de0-dev.auth.us-east-1.amazoncognito.com',
-      scope: [
-        'phone',
-        'email',
-        'profile',
-        'openid',
-        'aws.cognito.signin.user.admin',
-      ],
-      redirectSignIn: 'app://,app://',
-      redirectSignOut: 'app://',
-      responseType: 'code', // or 'token', note that REFRESH token will only be generated when the responseType is code
-    },
-  },
-});
 
 const config = {
   clientId: 'hmnm9en6ml3u8vgt4os099iqq',
@@ -205,4 +183,4 @@ class Signup extends Component {
   }
 }
 
-export default withOAuth(Signup);
+export default Signup;
